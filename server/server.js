@@ -8,7 +8,7 @@ const redis = require('redis');
 const RedisStore = require('connect-redis')(session)
 const redisClient = redis.createClient()
 const app = express();
-const DB_CONNECTION = process.env.APP_DB || 'musedb';
+const DB_CONNECTION = process.env.APP_DB || 'museVI ';
 const sessionStore = new RedisStore({
   host: 'localhost',
   port: 6379,
@@ -45,7 +45,7 @@ app.use(session({
   resave: false,
   name: 'museCookie',
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24,
     httpOnly: false,
     sameSite: false,
     secure: process.env.ENVIRONMENT === 'production'
