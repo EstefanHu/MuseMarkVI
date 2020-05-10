@@ -11,7 +11,7 @@ const userSchema = new Schema({
         default: ''
     },
     lastName: {
-        type: String, 
+        type: String,
         required: true,
         trim: true,
         default: ''
@@ -31,8 +31,8 @@ const userSchema = new Schema({
         default: ''
     },
     credibility: {
-      type: Number,
-      default: 0
+        type: Number,
+        default: 0
     },
     createdAt: {
         type: Date,
@@ -47,13 +47,13 @@ const userSchema = new Schema({
 });
 
 // https://www.mongodb.com/blog/post/password-authentication-with-mongoose-part-1
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
     let user = this;
-    if(!user.isModified('password')) return next();
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    if (!user.isModified('password')) return next();
+    bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
         if (err) return next(err);
 
-        bcrypt.hash(user.password, salt, function(err, hash) {
+        bcrypt.hash(user.password, salt, function (err, hash) {
             if (err) return next(err);
 
             user.password = hash;
@@ -62,8 +62,8 @@ userSchema.pre('save', function(next) {
     });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+userSchema.methods.comparePassword = function (candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
     });
