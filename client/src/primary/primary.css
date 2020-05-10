@@ -1,0 +1,116 @@
+#toolbar {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background: white;
+  color: white;
+}
+
+#toolbar h1 {
+  margin-left: 20px;
+}
+
+#toolbar span {
+  margin-left: 30px;
+  height: 25px;
+  color: var(--color-accent-dark);
+}
+
+.toolbar__icons {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.toolbar__button {
+  padding: 0 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 20px;
+  height: 25px;
+}
+
+.toolbar__button:hover,
+.toolbar__button:focus {
+  background: var(--color-accent-tertiary);
+}
+
+.primaryNav {
+  position: fixed;
+  left: 0;
+  width: 80px;
+  height: 100vh;
+  background: var(--color-accent);
+  border-right: 1px solid rgb(228, 228, 228);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: center;
+  padding-top: 90px;
+}
+
+.primaryNav a {
+  text-decoration: none;
+}
+
+.primaryIcon {
+  color: white;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+#loading {
+  margin: 0 auto;
+  width: 100px;
+  padding-top: 50vh;
+}
+
+#loading>p {
+  background-color: var(--color-accent-dark);
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  position: relative;
+}
+
+#loading>p::before,
+#loading>p::after {
+  animation-duration: .6s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-name: loading;
+  animation-direction: alternate;
+  animation-play-state: running;
+  position: absolute;
+  content: "";
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  top: 0px;
+  width: 15px;
+  height: 15px;
+}
+
+#loading>p::before {
+  left: -25px;
+  transform-origin: 32.5px center;
+}
+
+#loading>p::after {
+  left: 25px;
+  transform-origin: -17.5px center;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+}

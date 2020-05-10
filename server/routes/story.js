@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const Story = require('./../models/story');
+const Story = require('../models/story');
+const User = require('../models/user');
 
 router.post('/create', async (req, res) => {
   try {
@@ -8,30 +9,29 @@ router.post('/create', async (req, res) => {
       title,
       description,
       genre,
-      location,
-      route,
+      coordinates,
     } = req.body;
     let story;
 
+    // Check if exist
+    // Upate if does ELSE make new entry
     if (id !== undefined) {
       story = await Story.findByIdAndUpdate(
         { _id: id },
         {
           title: title,
           description: description,
-          location: location,
-          route: route,
-          author: req.session.userID
+          coordinates: coordinates,
         }
       );
     } else {
+      const authorInfo = await User.findById(req.session.userID);
+      const authorName = authorInfo.firstName + ' ' + authroInfo.lastName
       story = new Story();
       story.title = title;
       story.description = description;
       story.genre = genre;
-      story.location = location;
-      story.route = route;
-      story.author = req.session.userID;
+      story.author = authorName;
       story.community = req.session.community;
     }
     await story.save();

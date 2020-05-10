@@ -21,7 +21,11 @@ const storySchema = new Schema({
     type: Number,
     default: 0
   },
-  location: {
+  community: {
+    type: String,
+    default: ''
+  },
+  coordinates: {
     type: [Number],
     default: 0
   },
