@@ -15,14 +15,12 @@ export const Nav = () => (
             <>
               <Link to='/login'>
                 <button
-                  id='login'
-                  className='landing__nav--button'
+                  id='landing__nav--login'
                 >Log in</button>
               </Link>
               <Link to='/register'>
                 <button
-                  id='register'
-                  className='landing__nav--button'
+                  id='landing__nav--register'
                 >Sign up</button>
               </Link>
             </>

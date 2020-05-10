@@ -11,7 +11,6 @@ export const Landing = () => (
         id='hero__text'
       >Project<br />:Muse</h1>
     </div>
-
     <LandingContent />
   </main>
 )
