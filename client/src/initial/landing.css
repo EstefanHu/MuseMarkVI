@@ -7,6 +7,52 @@
   align-items: center;
 }
 
+#landingContainer {
+  max-width: 1200px;
+  height: fit-content;
+  margin: 0 auto;
+  padding-top: 100px;
+  position: relative;
+
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#landingContainer::-webkit-scrollbar {
+  display: none;
+}
+
+#hero__text {
+  font-size: 23rem;
+  color: var(--color-accent);
+  background: -webkit-linear-gradient(var(--color-accent), white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Heebo';
+  line-height: 1;
+  text-align: right;
+  z-index: 0;
+  width: 100%;
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__back {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  height: 100vh;
+  transform: translateZ(-1px) scale(2);
+}
+
 #landing__nav--login,
 #landing__nav--register {
   border-radius: 20px;

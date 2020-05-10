@@ -3,6 +3,10 @@
 
 :root {
   --color-accent: rgb(255, 50, 50);
+  --color-accent-secondary: rgb(250, 0, 0);
+  --color-accent-tertiary: rgb(252, 240, 240);
+  font-size: 16px;
+  --color-accent-dark: #444;
 }
 
 *, *::before, *::after {
@@ -19,4 +23,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  width: 100vw;
+  position: relative;
 }

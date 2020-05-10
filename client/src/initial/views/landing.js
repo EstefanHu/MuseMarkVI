@@ -3,7 +3,7 @@ import React from 'react';
 import { LandingContent } from '../components/LandingContent';
 
 export const Landing = () => (
-  <main id='landingContainer'>
+  <>
     <div
       className='parallax__layer parallax__back'
     >
@@ -12,5 +12,5 @@ export const Landing = () => (
       >Project<br />:Muse</h1>
     </div>
     <LandingContent />
-  </main>
+  </>
 )

@@ -14,12 +14,14 @@ import { Nav } from './components/nav';
 
 export const Initial = () => (
   <>
-    <Nav />    
-    <Route exact path='/' component={Landing} />
-    <Route path='/login' component={Login} />
-    <Route path='/register' component={Register} />
-    <Route path='/privacy' component={Privacy} />
-    <Route path='/terms' component={Terms} />
-    <Route path='/forgot' component={Forgot} />
+    <Nav />
+    <main id='landingContainer'>
+      <Route exact path='/' component={Landing} />
+      <Route path='/login' component={Login} />
+      <Route path='/register' component={Register} />
+      <Route path='/privacy' component={Privacy} />
+      <Route path='/terms' component={Terms} />
+      <Route path='/forgot' component={Forgot} />
+    </main>
   </>
 );

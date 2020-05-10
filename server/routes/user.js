@@ -42,7 +42,7 @@ router.post('/register', async (req, res) => {
     user = await user.save();
 
     req.session.userID = user._id;
-    req.session.community = await assignLocation(longitude, latitude);
+    // req.session.community = await assignLocation(longitude, latitude);
     res.json("Registration successful");
   } catch (error) {
     res.status(500).json('error: ' + error);

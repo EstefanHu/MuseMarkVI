@@ -9,7 +9,8 @@ export const Nav = () => (
       <span>
         {Cookie.get('museCookie') ? (
           <Link to='/app/dashboard'>
-            <button id='login'>Log in</button>
+            <button id='landing__nav--login'
+            >Log in</button>
           </Link>
         ) : (
             <>
