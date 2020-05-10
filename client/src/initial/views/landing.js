@@ -2,7 +2,7 @@ import React from 'react';
 
 import { LandingContent } from '../components/LandingContent';
 
-export const Index = () => (
+export const Landing = () => (
   <main id='landingContainer'>
     <div
       className='parallax__layer parallax__back'

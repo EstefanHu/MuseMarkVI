@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Cookie from 'js-cookie';
 
-import { Landing } from './landing';
+import { Initial } from './initial';
 import { Primary } from './primary';
 import { FourOhFour } from './ERROR/FourOhFour';
 import { LocationContext } from './context';
@@ -46,7 +46,7 @@ export const App = () => {
     <LocationContext.Provider value={{ lng, setLng, lat, setLat }}>
       <Router>
         <Switch>
-          <Route exact path='/(|register|login|privacy|terms|forgot)' component={Landing} />
+          <Route exact path='/(|register|login|privacy|terms|forgot)' component={Initial} />
           <AuthRoute exact path='/app/(|dashboard|create|community|settings)' component={Primary} />
           <Route component={FourOhFour} />
         </Switch>

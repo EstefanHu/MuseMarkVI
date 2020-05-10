@@ -1,0 +1,17 @@
+
+#landing__nav {
+  margin: 0 auto;
+  width: 1200px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.landing__nav--button {
+  border-radius: 20px;
+  height: 34px;
+  width: 100px;
+  font-size: 1rem;
+  font-weight: bold;
+}
