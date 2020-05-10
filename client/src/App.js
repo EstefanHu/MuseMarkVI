@@ -38,9 +38,13 @@ export const App = () => {
   useEffect(() => {
     fetch('http://ip-api.com/json')
       .then(res => res.json())
-      .then(console.log)
+      .then(res => {
+        console.log(res);
+        setLng(res.lon);
+        setLat(res.lat);
+      })
       .catch(console.error);
-  })
+  }, []);
 
   return (
     <LocationContext.Provider value={{ lng, setLng, lat, setLat }}>

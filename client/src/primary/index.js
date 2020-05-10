@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Route } from 'react-router-dom';
 
 import { Toolbar } from './layout/toolbar.js';
 import { Nav } from './layout/nav.js';
 import { Loading } from './layout/loading';
 
-import { StoryContext, LocationContext, NodeContext } from '../context';
+import { StoryContext, LocationContext } from '../context';
 
 import './primary.css';
 
-import { Map } from './map';
+import { Map } from './layout/map';
 import { Dashboard } from './dashboard/index';
 
 export const Primary = () => {
   const { lng, lat } = useContext(LocationContext);
   const [api, setApi] = useState('');
+  const [community, setCommunity] = useState([]);
   const [story, setStory] = useState(null);
 
   useEffect(() => {
@@ -24,10 +24,18 @@ export const Primary = () => {
       .catch(console.error)
   }, []);
 
+  useEffect(() => {
+    fetch('http://localhost:4000/story/community')
+      .then(res => res.json())
+      .then(res => setCommunity(res.stories))
+      .then(console.error);
+  });
+
   return (
     <StoryContext.Provider value={{ story, setStory }}>
       <Toolbar />
       <Nav />
+
       {api && lng & lat ? (
         <Map
           lng={lng}
@@ -37,7 +45,8 @@ export const Primary = () => {
       ) : (
           <Loading />
         )}
-      <Route path='/app/dashboard' component={Dashboard} />
+
+      <Dashboard community={community} />
 
     </StoryContext.Provider>
   )

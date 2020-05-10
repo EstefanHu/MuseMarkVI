@@ -15,6 +15,11 @@ export const Toolbar = withRouter(props => {
     props.history.push('/app/create');
   }
 
+  const cancelStory = () => {
+    setStory(null);
+    props.history.push('/app/dashboard');
+  }
+
   const saveStory = () => {
     if (story === null ||
       story.title === '' ||
@@ -32,8 +37,7 @@ export const Toolbar = withRouter(props => {
         "title": story.title,
         "description": story.description,
         "genre": story.genre,
-        "location": story.route[0].coordinates,
-        "route": story.route
+        "coordinates": story.coordinates,
       })
     })
       .then(res => res.json())
@@ -41,10 +45,6 @@ export const Toolbar = withRouter(props => {
 
     setStory(null);
     props.history.push('/app/dashboard');
-  }
-
-  const setAction = action => {
-    sessionStorage.setItem('action', action);
   }
 
   return (
@@ -60,20 +60,8 @@ export const Toolbar = withRouter(props => {
             <>
               <button
                 className='toolbar__button'
-                onClick={() => setAction('node')}
-              >Add Node</button>
-              <button
-                className='toolbar__button'
-                onClick={() => setAction('turn')}
-              >Add Turn</button>
-              <button
-                className='toolbar__button'
-                onClick={() => setAction('edit')}
-              >Edit</button>
-              <button
-                className='toolbar__button'
-                onClick={() => setAction('remove')}
-              >Remove</button>
+                onClick={cancelStory}
+              >cancel</button>
               <button
                 className='toolbar__button'
                 onClick={saveStory}

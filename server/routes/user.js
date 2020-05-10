@@ -1,23 +1,6 @@
 const router = require('express').Router();
 const User = require('./../models/user');
 const bcrypt = require('bcryptjs');
-const fetch = require('node-fetch');
-
-const assignLocation = async (longitude, latitude) => {
-  return await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude}%2C%20${latitude}.json?`
-    + process.env.REVERSE_GEOCODING_KEY)
-    .then(res => res.json())
-    .then(res => {
-      const ranges = res.features;
-      for (let i = 0; i < ranges.length; i++) {
-        const checkRange = ranges[i].id.split('.');
-        if (checkRange[0] === 'place') {
-          return ranges[i].place_name.split(', ')[0];
-        }
-      }
-    })
-    .catch(console.error);
-}
 
 router.post('/register', async (req, res) => {
   try {
@@ -26,8 +9,7 @@ router.post('/register', async (req, res) => {
       lastName,
       email,
       password,
-      longitude,
-      latitude
+      community,
     } = req.body;
 
     let checkIfUserExist = await User.findOne({ email: email });
@@ -42,7 +24,7 @@ router.post('/register', async (req, res) => {
     user = await user.save();
 
     req.session.userID = user._id;
-    // req.session.community = await assignLocation(longitude, latitude);
+    req.session.community = community;
     res.json("Registration successful");
   } catch (error) {
     res.status(500).json('error: ' + error);

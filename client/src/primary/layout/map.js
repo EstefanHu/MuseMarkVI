@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import ReactMapGl from 'react-map-gl';
-import { Route } from 'react-router-dom';
 
 import { StoryContext } from '../../context';
 
@@ -31,7 +30,6 @@ export const Map = ({ lng, lat, apikey }) => {
         }}
         onClick={engage}
       >
-        {/* <Route path='/app/create' component={Create} /> */}
       </ReactMapGl>
     </div>
   )
