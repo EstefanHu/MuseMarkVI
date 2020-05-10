@@ -7,6 +7,11 @@ import {
 } from 'react-router-dom';
 import Cookie from 'js-cookie';
 
+import { Landing } from './landing';
+import { Primary } from './primary';
+import { FourOhFour } from './ERROR/FourOhFour';
+import { LocationContext } from './context';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css';
 
@@ -38,12 +43,14 @@ export const App = () => {
   })
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/(|register|login|privacy|terms|forgot)' component={Landing} />
-        <AuthRoute exact path='/app/(|dashboard|create|community|settings)' component={Primary} />
-        <Route component={FourOhFour} />
-      </Switch>
-    </Router>
+    <LocationContext.Provider value={{ lng, setLng, lat, setLat }}>
+      <Router>
+        <Switch>
+          <Route exact path='/(|register|login|privacy|terms|forgot)' component={Landing} />
+          <AuthRoute exact path='/app/(|dashboard|create|community|settings)' component={Primary} />
+          <Route component={FourOhFour} />
+        </Switch>
+      </Router>
+    </LocationContext.Provider>
   )
 }

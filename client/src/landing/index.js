@@ -12,36 +12,34 @@ import { Terms } from './views/terms';
 import { Forgot } from './views/forgot';
 
 
-export const Landing = () => {
-  return (
-    <>
-      <nav className='topNav'>
-        <span id='landing__nav'>
-          <Link to='/' className='logo'>:Muse</Link>
-          <span>
-            {Cookie.get('museCookie') ? (
-              <Link to='/app/dashboard'>
-                <button id='login'>Log in</button>
-              </Link>
-            ) : (
-                <>
-                  <Link to='/login'>
-                    <button id='login'>Log in</button>
-                  </Link>
-                  <Link to='/register'>
-                    <button id='register'>Sign up</button>
-                  </Link>
-                </>
-              )}
-          </span>
+export const Landing = () => (
+  <>
+    <nav className='topNav'>
+      <span id='landing__nav'>
+        <Link to='/' className='logo'>:Muse</Link>
+        <span>
+          {Cookie.get('museCookie') ? (
+            <Link to='/app/dashboard'>
+              <button id='login'>Log in</button>
+            </Link>
+          ) : (
+              <>
+                <Link to='/login'>
+                  <button id='login'>Log in</button>
+                </Link>
+                <Link to='/register'>
+                  <button id='register'>Sign up</button>
+                </Link>
+              </>
+            )}
         </span>
-      </nav>
-      <Route exact path='/' component={Index} />
-      <Route path='/login' component={Login} />
-      <Route path='/register' component={Register} />
-      <Route path='/privacy' component={Privacy} />
-      <Route path='/terms' component={Terms} />
-      <Route path='/forgot' component={Forgot} />
-    </>
-  )
-}
+      </span>
+    </nav>
+    <Route exact path='/' component={Index} />
+    <Route path='/login' component={Login} />
+    <Route path='/register' component={Register} />
+    <Route path='/privacy' component={Privacy} />
+    <Route path='/terms' component={Terms} />
+    <Route path='/forgot' component={Forgot} />
+  </>
+);

@@ -1,0 +1,9 @@
+.fourohfour {
+  font-size: 10rem;
+  color: var(--color-accent);
+}
+
+.fourohfour p {
+  margin: 50vh auto;
+  width: fit-content;
+}
