@@ -8,7 +8,7 @@ const redis = require('redis');
 const RedisStore = require('connect-redis')(session)
 const redisClient = redis.createClient()
 const app = express();
-const DB_CONNECTION = process.env.APP_DB || 'museVI ';
+const DB_CONNECTION = process.env.APP_DB || 'museVI';
 const sessionStore = new RedisStore({
   host: 'localhost',
   port: 6379,
