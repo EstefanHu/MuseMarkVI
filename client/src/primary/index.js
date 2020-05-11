@@ -12,7 +12,7 @@ import {
 import './primary.css';
 
 import { Map } from './layout/map';
-import { Dashboard } from './dashboard';
+import { Feed } from './layout/feed';
 
 export const Primary = () => {
   const { lng, lat, community } = useContext(LocationContext);
@@ -37,7 +37,7 @@ export const Primary = () => {
 
       <FeedContext.Provider value={{ feed, setFeed }} >
         {lng && lat && <Map lng={lng} lat={lat} />}
-        <Dashboard />
+        <Feed />
       </FeedContext.Provider>
 
     </StoryContext.Provider>

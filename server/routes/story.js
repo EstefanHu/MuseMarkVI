@@ -10,6 +10,7 @@ router.post('/create', async (req, res) => {
       description,
       genre,
       coordinates,
+      community
     } = req.body;
     let story;
 
@@ -32,7 +33,7 @@ router.post('/create', async (req, res) => {
       story.description = description;
       story.genre = genre;
       story.author = authorName;
-      story.community = req.session.community;
+      story.community = community;
     }
     await story.save();
 
