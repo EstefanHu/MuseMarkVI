@@ -4,10 +4,15 @@ import {
   FeedContext
 } from '../../context';
 
+import { GenreSetter } from './genresetter';
 import { Entry } from '../components/entry';
 import { LoadFeed } from '../layout/loadFeed';
 
 import './community.css';
+
+const header = {
+  textAlign: 'center',
+}
 
 export const Community = () => {
   const { community } = useContext(LocationContext);
@@ -29,12 +34,12 @@ export const Community = () => {
 
   return (
     <>
-      <h1 style={header}>Entries in {community}</h1>
-      <div className='genreSetter'>
-        <button
-          onClick={() => setGenre('Fiction')}
-        >Fiction</button>
-      </div>
+      <h1
+        style={header}
+      >Entries in {community}</h1>
+
+      <GenreSetter setGenre={newGenre => setGenre(newGenre)} />
+
       {stories ? stories.map(item => (
         <Entry
           key={item._id}
@@ -49,8 +54,4 @@ export const Community = () => {
         )}
     </>
   )
-}
-
-const header = {
-  textAlign: 'center',
 }

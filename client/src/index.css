@@ -34,3 +34,7 @@ main {
   width: 100vw;
   position: relative;
 }
+
+.noBar::-webkit-scrollbar {
+  display: none;
+}
