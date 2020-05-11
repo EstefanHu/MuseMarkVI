@@ -17,7 +17,7 @@ import { Feed } from './layout/feed';
 export const Primary = () => {
   const { lng, lat, community } = useContext(LocationContext);
   const [story, setStory] = useState(null);
-  const [feed, setFeed] = useState(null);
+  const [feed, setFeed] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:4000/story/community/'

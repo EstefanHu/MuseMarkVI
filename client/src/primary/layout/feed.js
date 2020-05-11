@@ -15,10 +15,7 @@ const feed = {
   top: '60px',
   left: '80px',
   borderRight: '1px solid lightgrey',
-}
-
-const closed = {
-  left: '-320px'
+  padding: '30px 10px'
 }
 
 export const Feed = () => {

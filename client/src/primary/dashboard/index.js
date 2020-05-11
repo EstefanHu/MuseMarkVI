@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { FeedContext } from '../../context';
 
 import { Entry } from '../components/entry';
+import { LoadFeed } from '../layout/loadFeed';
 
 import './dashboard.css';
 
@@ -11,10 +12,10 @@ export const Dashboard = () => {
   const [stories, setStories] = useState([])
 
   useEffect(() => {
-    console.log(feed);
+    setStories(feed);
   }, [feed]);
 
-  return (
+  return stories ? (
     <section className='dashboard'>
       {stories.map(item => (
         <Entry
@@ -27,5 +28,7 @@ export const Dashboard = () => {
         />
       ))}
     </section>
+  ) : (
+    <LoadFeed />
   )
 }

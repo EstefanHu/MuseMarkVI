@@ -1,0 +1,12 @@
+.genreSetter {
+    background: yellow;
+}
+
+.genreSetter button {
+    border: none;
+    color: var(--accent-color-dark);
+    background: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 4px 10px;
+}
