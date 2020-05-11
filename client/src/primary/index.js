@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 
 import { Toolbar } from './layout/toolbar.js';
 import { Nav } from './layout/nav.js';
-import { Loading } from './layout/loading';
 
 import { StoryContext, LocationContext } from '../context';
 
@@ -13,38 +12,24 @@ import { Dashboard } from './dashboard';
 
 export const Primary = () => {
   const { lng, lat } = useContext(LocationContext);
-  const [api, setApi] = useState('');
   const [story, setStory] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api')
+    fetch('http://localhost:4000/story/community', {
+      credentials: 'include'
+    })
       .then(res => res.json())
-      .then(res => setApi(res))
-      .catch(console.error)
+      // .then(res => setCommunityStories(res.stories))
+      .then(console.log)
+      .then(console.error);
   }, []);
-
-  // useEffect(() => {
-  //   fetch('http://localhost:4000/story/community')
-  //     .then(res => res.json())
-  //     .then(res => setCommunity(res.stories))
-  //     .then(console.error);
-  // });
 
   return (
     <StoryContext.Provider value={{ story, setStory }}>
+
       <Toolbar />
       <Nav />
-
-      {api && lng & lat ? (
-        <Map
-          lng={lng}
-          lat={lat}
-          apikey={api}
-        />
-      ) : (
-          <Loading />
-        )}
-
+      {lng && lat && <Map lng={lng} lat={lat} />}
       <Dashboard />
 
     </StoryContext.Provider>

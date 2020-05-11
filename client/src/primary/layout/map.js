@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactMapGl from 'react-map-gl';
 
 import { StoryContext } from '../../context';
+import { Loading } from './loading';
 
-export const Map = ({ lng, lat, apikey }) => {
+export const Map = ({ lng, lat }) => {
   const { setStory } = useContext(StoryContext);
   const [viewport, setViewport] = useState({
     latitude: lat,
@@ -12,6 +13,14 @@ export const Map = ({ lng, lat, apikey }) => {
     height: '100vh',
     zoom: 14
   });
+  const [api, setApi] = useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:4000/api')
+      .then(res => res.json())
+      .then(res => setApi(res))
+      .catch(console.error)
+  }, []);
 
   const engage = e => {
     setStory({
@@ -19,11 +28,11 @@ export const Map = ({ lng, lat, apikey }) => {
     })
   }
 
-  return (
+  return api ? (
     <div id='mapboxView'>
       <ReactMapGl
         {...viewport}
-        mapboxApiAccessToken={apikey}
+        mapboxApiAccessToken={api}
         mapStyle='mapbox://styles/estefan074/ck002rku546481cnq4hc1buof'
         onViewportChange={viewport => {
           setViewport(viewport)
@@ -32,5 +41,7 @@ export const Map = ({ lng, lat, apikey }) => {
       >
       </ReactMapGl>
     </div>
-  )
+  ) : (
+      <Loading />
+    )
 }
