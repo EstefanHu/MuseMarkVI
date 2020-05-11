@@ -11,7 +11,7 @@ export const Toolbar = withRouter(props => {
   const { story, setStory } = useContext(StoryContext)
 
   const createStory = () => {
-    setStory(null);
+    setStory({});
     props.history.push('/app/create');
   }
 

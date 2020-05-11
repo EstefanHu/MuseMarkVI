@@ -53,11 +53,12 @@ router.get('/library', async (req, res) => {
   }
 });
 
-router.get('/community', async (req, res) => {
+router.get('/community/:community', async (req, res) => {
   try {
     let stories = await Story
-      .find({ community: req.session.community })
+      .find({ community: req.params.community })
       .sort({ createdAt: 'desc' });
+
     res.json(stories);
   } catch (error) {
     res.status(500).json('Error: ' + error)

@@ -3,7 +3,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Toolbar } from './layout/toolbar.js';
 import { Nav } from './layout/nav.js';
 
-import { StoryContext, LocationContext } from '../context';
+import {
+  StoryContext,
+  LocationContext,
+  FeedContext
+} from '../context';
 
 import './primary.css';
 
@@ -11,26 +15,30 @@ import { Map } from './layout/map';
 import { Dashboard } from './dashboard';
 
 export const Primary = () => {
-  const { lng, lat } = useContext(LocationContext);
+  const { lng, lat, community } = useContext(LocationContext);
   const [story, setStory] = useState(null);
+  const [feed, setFeed] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/story/community', {
+    fetch('http://localhost:4000/story/community/'
+      + community, {
       credentials: 'include'
     })
       .then(res => res.json())
-      // .then(res => setCommunityStories(res.stories))
-      .then(console.log)
+      .then(res => setFeed(res.stories))
       .then(console.error);
-  }, []);
+  }, [community]);
 
   return (
     <StoryContext.Provider value={{ story, setStory }}>
 
       <Toolbar />
       <Nav />
-      {lng && lat && <Map lng={lng} lat={lat} />}
-      <Dashboard />
+
+      <FeedContext.Provider value={{ feed, setFeed }} >
+        {lng && lat && <Map lng={lng} lat={lat} />}
+        <Dashboard />
+      </FeedContext.Provider>
 
     </StoryContext.Provider>
   )

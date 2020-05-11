@@ -30,7 +30,8 @@
   font-weight: bold;
   margin-right: 20px;
   height: 25px;
-}
+  background: white;
+} 
 
 .toolbar__button:hover,
 .toolbar__button:focus {
