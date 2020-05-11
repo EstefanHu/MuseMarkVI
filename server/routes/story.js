@@ -60,7 +60,7 @@ router.get('/community/:community', async (req, res) => {
       .find({ community: req.params.community })
       .sort({ createdAt: 'desc' });
 
-    res.json(stories);
+    res.json({"stories": stories});
   } catch (error) {
     res.status(500).json('Error: ' + error)
   }
