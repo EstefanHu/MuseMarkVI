@@ -34,6 +34,7 @@ const AuthRoute = ({ component: Component, ...rest }) => (
 export const App = () => {
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
+  const [community, setCommunity] = useState(null);
 
   useEffect(() => {
     fetch('http://ip-api.com/json')
@@ -42,12 +43,13 @@ export const App = () => {
         console.log(res);
         setLng(res.lon);
         setLat(res.lat);
+        setCommunity(res.city);
       })
       .catch(console.error);
   }, []);
 
   return (
-    <LocationContext.Provider value={{ lng, setLng, lat, setLat }}>
+    <LocationContext.Provider value={{ lng, setLng, lat, setLat, community, setCommunity }}>
       <Router>
         <Switch>
           <Route exact path='/(|register|login|privacy|terms|forgot)' component={Initial} />

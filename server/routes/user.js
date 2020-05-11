@@ -36,8 +36,7 @@ router.post('/login', async (req, res) => {
     const {
       email,
       password,
-      longitude,
-      latitude
+      community
     } = req.body;
     let user = await User.findOne({ email: email });
 
@@ -49,7 +48,7 @@ router.post('/login', async (req, res) => {
       if (err) throw err;
       if (!isMatch) return res.json({ error: 'Email or Password was incorrect' });
       req.session.userID = user._id;
-      req.session.community = await assignLocation(longitude, latitude);
+      req.session.community = community;
       res.json('Login successful');
     });
   } catch (error) {

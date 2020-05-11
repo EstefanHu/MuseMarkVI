@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { LocationContext } from '../../context';
 
 export const Login = withRouter(props => {
-  const { lng, lat } = useContext(LocationContext);
+  const { community } = useContext(LocationContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,10 +19,9 @@ export const Login = withRouter(props => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
-        longitude: lng,
-        latitude: lat
+        email,
+        password,
+        community
       })
     })
       .then(res => res.json())
