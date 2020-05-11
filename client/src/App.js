@@ -40,7 +40,6 @@ export const App = () => {
     fetch('http://ip-api.com/json')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         setLng(res.lon);
         setLat(res.lat);
         setCommunity(res.city);

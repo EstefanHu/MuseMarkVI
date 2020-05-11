@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { LocationContext } from '../../context';
 
 export const Register = withRouter(props => {
-  const { lng, lat } = useContext(LocationContext);
+  const { community } = useContext(LocationContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -24,12 +24,11 @@ export const Register = withRouter(props => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        longitude: lng,
-        latitude: lat
+        firstName,
+        lastName,
+        email,
+        password,
+        community
       })
     })
       .then(res => res.json())

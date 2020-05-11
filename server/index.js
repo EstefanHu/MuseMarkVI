@@ -70,7 +70,7 @@ app.get('/flush', (_, res) => {
   } catch (error) {
     res.status(500).json('Error:' + error);
   }
-})
+});
 
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);

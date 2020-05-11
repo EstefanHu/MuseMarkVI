@@ -9,12 +9,11 @@ import { StoryContext, LocationContext } from '../context';
 import './primary.css';
 
 import { Map } from './layout/map';
-import { Dashboard } from './dashboard/index';
+import { Dashboard } from './dashboard';
 
 export const Primary = () => {
   const { lng, lat } = useContext(LocationContext);
   const [api, setApi] = useState('');
-  const [community, setCommunity] = useState([]);
   const [story, setStory] = useState(null);
 
   useEffect(() => {
@@ -24,12 +23,12 @@ export const Primary = () => {
       .catch(console.error)
   }, []);
 
-  useEffect(() => {
-    fetch('http://localhost:4000/story/community')
-      .then(res => res.json())
-      .then(res => setCommunity(res.stories))
-      .then(console.error);
-  });
+  // useEffect(() => {
+  //   fetch('http://localhost:4000/story/community')
+  //     .then(res => res.json())
+  //     .then(res => setCommunity(res.stories))
+  //     .then(console.error);
+  // });
 
   return (
     <StoryContext.Provider value={{ story, setStory }}>
@@ -46,7 +45,7 @@ export const Primary = () => {
           <Loading />
         )}
 
-      <Dashboard community={community} />
+      <Dashboard />
 
     </StoryContext.Provider>
   )
