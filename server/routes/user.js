@@ -9,7 +9,6 @@ router.post('/register', async (req, res) => {
       lastName,
       email,
       password,
-      community,
     } = req.body;
 
     let checkIfUserExist = await User.findOne({ email: email });
@@ -24,7 +23,6 @@ router.post('/register', async (req, res) => {
     user = await user.save();
 
     req.session.userID = user._id;
-    req.session.community = community;
     res.json("Registration successful");
   } catch (error) {
     res.status(500).json('error: ' + error);
@@ -36,7 +34,6 @@ router.post('/login', async (req, res) => {
     const {
       email,
       password,
-      community
     } = req.body;
     let user = await User.findOne({ email: email });
 
@@ -48,7 +45,6 @@ router.post('/login', async (req, res) => {
       if (err) throw err;
       if (!isMatch) return res.json({ error: 'Email or Password was incorrect' });
       req.session.userID = user._id;
-      req.session.community = community;
       res.json('Login successful');
     });
   } catch (error) {

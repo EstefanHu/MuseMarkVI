@@ -1,9 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { LocationContext } from '../../context';
 
 export const Register = withRouter(props => {
-  const { community } = useContext(LocationContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -28,7 +26,6 @@ export const Register = withRouter(props => {
         lastName,
         email,
         password,
-        community
       })
     })
       .then(res => res.json())

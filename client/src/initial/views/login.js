@@ -1,10 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
-import { LocationContext } from '../../context';
-
 export const Login = withRouter(props => {
-  const { community } = useContext(LocationContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,8 +17,7 @@ export const Login = withRouter(props => {
       },
       body: JSON.stringify({
         email,
-        password,
-        community
+        password
       })
     })
       .then(res => res.json())

@@ -26,7 +26,7 @@ export const Primary = () => {
     })
       .then(res => res.json())
       .then(res => setFeed(res.stories))
-      .then(console.error);
+      .catch(console.error);
   }, [community]);
 
   return (
