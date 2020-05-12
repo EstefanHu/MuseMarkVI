@@ -16,7 +16,7 @@ export const Delete = props => {
   });
 
   const handleDelete = id => {
-    fetch('http://localhost:4000/story/delete/' + id, {
+    fetch('http://localhost:4000/entry/delete/' + id, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -35,11 +35,11 @@ export const Delete = props => {
         <h1>Are you sure?</h1>
         <p>Deleted stories cant be recovered.</p>
         <form onSubmit={() => handleDelete(props.id)}>
-          <button type='submit'>Delete Story</button>
+          <button type='submit'>Delete Entry</button>
         </form>
         <button
           onClick={() => props.toggleIsDeleting()}
-        >Keep Story</button>
+        >Keep Entry</button>
       </div>
     </div>
   )

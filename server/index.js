@@ -75,8 +75,8 @@ app.get('/flush', (_, res) => {
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);
 
-const storyRouter = require('./routes/story');
-app.use('/story', storyRouter);
+const entryRouter = require('./routes/entry');
+app.use('/entry', entryRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

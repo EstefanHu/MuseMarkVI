@@ -2,51 +2,51 @@ import React, {
   useContext
 } from 'react';
 
-import { StoryContext, LocationContext } from '../../context';
+import { EntryContext, LocationContext } from '../../context';
 import { withRouter } from 'react-router-dom';
 
 import { FiPlusSquare } from 'react-icons/fi';
 
 export const Toolbar = withRouter(props => {
   const { community } = useContext(LocationContext);
-  const { story, setStory } = useContext(StoryContext)
+  const { entry, setEntry } = useContext(EntryContext)
 
-  const createStory = () => {
-    setStory(null);
+  const createEntry = () => {
+    setEntry(null);
     props.history.push('/app/new');
   }
 
-  const cancelStory = () => {
-    setStory(null);
+  const cancelEntry = () => {
+    setEntry(null);
     props.history.push('/app/dashboard');
   }
 
-  const saveStory = () => {
-    if (story === null ||
-      story.title === '' ||
-      story.description === '')
+  const saveEntry = () => {
+    if (entry === null ||
+      entry.title === '' ||
+      entry.description === '')
       return alert('You seem to be missing a pitch');
-    if (story.route.length === 0)
-      return alert('There seems to be no story nodes');
+    if (entry.route.length === 0)
+      return alert('There seems to be no entry nodes');
 
-    fetch('http://localhost:4000/story/create', {
+    fetch('http://localhost:4000/entry/create', {
       credentials: 'include',
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        "id": story.id,
-        "genre": story.genre,
-        "title": story.title,
-        "description": story.description,
-        "coordinates": story.coordinates,
+        "id": entry.id,
+        "genre": entry.genre,
+        "title": entry.title,
+        "description": entry.description,
+        "coordinates": entry.coordinates,
         "community": community,
-        "body": story.body,
+        "body": entry.body,
       })
     })
       .then(res => res.json())
       .catch(console.error);
 
-    setStory(null);
+    setEntry(null);
     props.history.push('/app/dashboard');
   }
 
@@ -54,20 +54,20 @@ export const Toolbar = withRouter(props => {
     <nav id='toolbar' className='topNav'>
       <h1 className='logo'>:M</h1>
       <span>
-        {story === null ? (
+        {entry === null ? (
           <FiPlusSquare
             className='toolbar__icons'
-            onClick={createStory}
+            onClick={createEntry}
           />
         ) : (
             <>
               <button
                 className='toolbar__button'
-                onClick={cancelStory}
+                onClick={cancelEntry}
               >cancel</button>
               <button
                 className='toolbar__button'
-                onClick={saveStory}
+                onClick={saveEntry}
               >Save</button>
             </>
           )

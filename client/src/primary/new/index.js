@@ -1,26 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { StoryContext } from '../../context';
+import { EntryContext } from '../../context';
 
 import './new.css';
 
 export const New = () => {
-  const { story, setStory } = useContext(StoryContext);
+  const { entry, setEntry } = useContext(EntryContext);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('');
 
   useEffect(() => {
-    if (story === null) {
-      setStory({
+    if (entry === null) {
+      setEntry({
         "title": "",
         "description": "",
       });
     } else {
-      setTitle(story.title);
-      setDescription(story.description);
-      setGenre(story.genre);
+      setTitle(entry.title);
+      setDescription(entry.description);
+      setGenre(entry.genre);
     }
-  }, [story, setStory]);
+  }, [entry, setEntry]);
 
   return (
     <>
@@ -30,7 +30,7 @@ export const New = () => {
         type='text'
         value={title || ''}
         onChange={e => setTitle(e.target.value)}
-        placeholder='Title the Story'
+        placeholder='Title the Entry'
         required
       />
       <textarea
@@ -38,7 +38,7 @@ export const New = () => {
         type='text'
         value={description || ''}
         onChange={e => setDescription(e.target.value)}
-        placeholder='Describe the Story'
+        placeholder='Describe the Entry'
         required
       />
       <select

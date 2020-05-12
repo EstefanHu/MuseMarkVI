@@ -9,16 +9,16 @@ import './dashboard.css';
 
 export const Dashboard = () => {
   const { feed } = useContext(FeedContext);
-  const [stories, setStories] = useState([])
+  const [entry, setEntries] = useState([])
 
   useEffect(() => {
-    setStories(feed);
+    setEntries(feed);
   }, [feed]);
 
   return (
     <>
       <h1 className='header'>Your Entries</h1>
-      {stories ? stories.map(item => (
+      {entry ? entry.map(item => (
         <Entry
           key={item._id}
           genre={item.genre}

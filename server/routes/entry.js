@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Story = require('../models/story');
+const Entry = require('../models/entry');
 const User = require('../models/user');
 
 router.post('/create', async (req, res) => {
@@ -12,12 +12,12 @@ router.post('/create', async (req, res) => {
       coordinates,
       community
     } = req.body;
-    let story;
+    let entry;
 
     // Check if exist
     // Upate if does ELSE make new entry
     if (id !== undefined) {
-      story = await Story.findByIdAndUpdate(
+      entry = await Entry.findByIdAndUpdate(
         { _id: id },
         {
           title: title,
@@ -28,16 +28,16 @@ router.post('/create', async (req, res) => {
     } else {
       const authorInfo = await User.findById(req.session.userID);
       const authorName = authorInfo.firstName + ' ' + authroInfo.lastName
-      story = new Story();
-      story.title = title;
-      story.description = description;
-      story.genre = genre;
-      story.author = authorName;
-      story.community = community;
+      entry = new Entry();
+      entry.title = title;
+      entry.description = description;
+      entry.genre = genre;
+      entry.author = authorName;
+      entry.community = community;
     }
-    await story.save();
+    await entry.save();
 
-    res.json('Story Published');
+    res.json('Entry Published');
   } catch (error) {
     res.status(500).json('Error: ' + error);
   }
@@ -45,10 +45,10 @@ router.post('/create', async (req, res) => {
 
 router.get('/library', async (req, res) => {
   try {
-    let stories = await Story
+    let entries = await Entry
       .find({ author: req.session.userID })
       .sort({ createdAt: 'desc' });
-    res.json(stories);
+    res.json(entries);
   } catch (error) {
     res.status(500).json('Error: ' + error);
   }
@@ -56,11 +56,11 @@ router.get('/library', async (req, res) => {
 
 router.get('/community/:community', async (req, res) => {
   try {
-    let stories = await Story
+    let entries = await Entry
       .find({ community: req.params.community })
       .sort({ createdAt: 'desc' });
 
-    res.json({"stories": stories});
+    res.json({"entries": entries});
   } catch (error) {
     res.status(500).json('Error: ' + error)
   }
@@ -68,8 +68,8 @@ router.get('/community/:community', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    let story = await Story.findById(req.params.id);
-    res.json(story);
+    let entry = await Entry.findById(req.params.id);
+    res.json(entry);
   } catch (error) {
     res.type('text').status(500).send('Error: ' + error);
   }
@@ -77,8 +77,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/delete/:id', async (req, res) => {
   try {
-    await Story.findByIdAndDelete(req.params.id);
-    res.send('Deleted Story');
+    await Entry.findByIdAndDelete(req.params.id);
+    res.send('Deleted Entry');
   } catch (error) {
     res.type('text').status(500).send('Error: ' + error);
   }

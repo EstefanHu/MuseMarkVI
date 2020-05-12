@@ -13,18 +13,18 @@ import './community.css';
 export const Community = () => {
   const { community } = useContext(LocationContext);
   const { feed } = useContext(FeedContext);
-  const [stories, setStories] = useState(null);
+  const [entries, setEntries] = useState(null);
   const [genre, setGenre] = useState('All');
 
   useEffect(() => {
-    setStories(null);
-    if (genre === 'All') return setStories(feed);
+    setEntries(null);
+    if (genre === 'All') return setEntries(feed);
 
     const toFeed = []
     feed.forEach(item => {
       if (item.genre === genre) toFeed.push(item);
     });
-    setStories(toFeed);
+    setEntries(toFeed);
   }, [feed, genre]);
 
   return (
@@ -35,7 +35,7 @@ export const Community = () => {
 
       <GenreSetter setGenre={newGenre => setGenre(newGenre)} />
 
-      {stories ? stories.map(item => (
+      {entries ? entries.map(item => (
         <Entry
           key={item._id}
           genre={item.genre}

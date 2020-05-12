@@ -4,7 +4,7 @@ import { Toolbar } from './layout/toolbar.js';
 import { Nav } from './layout/nav.js';
 
 import {
-  StoryContext,
+  EntryContext,
   LocationContext,
   FeedContext
 } from '../context';
@@ -16,11 +16,11 @@ import { Feed } from './layout/feed';
 
 export const Primary = () => {
   const { lng, lat, community } = useContext(LocationContext);
-  const [story, setStory] = useState(null);
+  const [entry, setEntry] = useState(null);
   const [feed, setFeed] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/story/community/'
+    fetch('http://localhost:4000/entry/community/'
       + community, {
       credentials: 'include'
     })
@@ -30,7 +30,7 @@ export const Primary = () => {
   }, [community]);
 
   return (
-    <StoryContext.Provider value={{ story, setStory }}>
+    <EntryContext.Provider value={{ entry, setEntry }}>
 
       <Toolbar />
       <Nav />
@@ -40,6 +40,6 @@ export const Primary = () => {
         <Feed />
       </FeedContext.Provider>
 
-    </StoryContext.Provider>
+    </EntryContext.Provider>
   )
 }

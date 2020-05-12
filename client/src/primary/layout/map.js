@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ReactMapGl from 'react-map-gl';
 
-import { StoryContext } from '../../context';
+import { EntryContext } from '../../context';
 import { Loading } from './loading';
 
 export const Map = ({ lng, lat }) => {
-  const { setStory } = useContext(StoryContext);
+  const { setEntry } = useContext(EntryContext);
   const [viewport, setViewport] = useState({
     latitude: lat,
     longitude: lng,
@@ -23,7 +23,7 @@ export const Map = ({ lng, lat }) => {
   }, []);
 
   const engage = e => {
-    setStory({
+    setEntry({
       "coordinates": e.lngLat
     })
   }
