@@ -64,6 +64,10 @@
   margin-bottom: 20px;
 }
 
+.header {
+  text-align: center;
+}
+
 #loading {
   margin: 0 auto;
   width: 100px;

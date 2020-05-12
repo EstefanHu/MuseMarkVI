@@ -15,9 +15,10 @@ export const Dashboard = () => {
     setStories(feed);
   }, [feed]);
 
-  return stories ? (
-    <section className='dashboard'>
-      {stories.map(item => (
+  return (
+    <>
+      <h1 className='header'>Your Entries</h1>
+      {stories ? stories.map(item => (
         <Entry
           key={item._id}
           genre={item.genre}
@@ -26,9 +27,9 @@ export const Dashboard = () => {
           title={item.title}
           description={item.description}
         />
-      ))}
-    </section>
-  ) : (
-    <LoadFeed />
+      )) : (
+          <LoadFeed />
+        )}
+    </>
   )
 }

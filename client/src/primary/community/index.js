@@ -10,32 +10,27 @@ import { LoadFeed } from '../layout/loadFeed';
 
 import './community.css';
 
-const header = {
-  textAlign: 'center',
-}
-
 export const Community = () => {
   const { community } = useContext(LocationContext);
   const { feed } = useContext(FeedContext);
   const [stories, setStories] = useState(null);
-  const [genre, setGenre] = useState(null);
+  const [genre, setGenre] = useState('All');
 
   useEffect(() => {
     setStories(null);
+    if (genre === 'All') return setStories(feed);
 
     const toFeed = []
-
     feed.forEach(item => {
       if (item.genre === genre) toFeed.push(item);
     });
-
-    setStories(feed);
+    setStories(toFeed);
   }, [feed, genre]);
 
   return (
     <>
       <h1
-        style={header}
+        className='header'
       >Entries in {community}</h1>
 
       <GenreSetter setGenre={newGenre => setGenre(newGenre)} />
