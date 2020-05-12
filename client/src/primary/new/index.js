@@ -88,7 +88,7 @@ export const New = props => {
         className='entry__content'
         type='text'
         value={genre || ''}
-        onChange={e => setGenre(e.target.value)}
+        onChange={e => setGenre(e.options[e.selectedIndex].value)}
         required
       >
         <option value='Fiction'>Fiction</option>

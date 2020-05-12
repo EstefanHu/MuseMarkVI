@@ -14,7 +14,7 @@ const entrySchema = new Schema({
   },
   genre: {
     type: String,
-    requried: true,
+    required: true,
     default: ''
   },
   credibility: {

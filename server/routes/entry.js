@@ -16,6 +16,8 @@ router.post('/create', async (req, res) => {
     } = req.body;
     let entry;
 
+    console.log(genre);
+
     if (id !== undefined) {
       entry = await Entry.findByIdAndUpdate(
         { _id: id },
@@ -28,7 +30,7 @@ router.post('/create', async (req, res) => {
       );
     } else {
       const authorInfo = await User.findById(req.session.userID);
-      const authorName = authorInfo.firstName + ' ' + authroInfo.lastName
+      const authorName = authorInfo.firstName + ' ' + authorInfo.lastName
       entry = new Entry();
       entry.title = title;
       entry.description = description;
