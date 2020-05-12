@@ -26,7 +26,7 @@ export const Primary = () => {
       credentials: 'include'
     })
       .then(res => res.json())
-      .then(res => setFeed(res.stories))
+      .then(res => setFeed(res.entries))
       .catch(console.error);
   }, [community]);
 

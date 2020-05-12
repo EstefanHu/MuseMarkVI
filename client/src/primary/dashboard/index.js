@@ -9,7 +9,7 @@ import './dashboard.css';
 
 export const Dashboard = () => {
   const { feed } = useContext(FeedContext);
-  const [entry, setEntries] = useState([])
+  const [entries, setEntries] = useState([])
 
   useEffect(() => {
     setEntries(feed);
@@ -18,7 +18,7 @@ export const Dashboard = () => {
   return (
     <>
       <h1 className='header'>Your Entries</h1>
-      {entry ? entry.map(item => (
+      {entries ? entries.map(item => (
         <Entry
           key={item._id}
           genre={item.genre}
