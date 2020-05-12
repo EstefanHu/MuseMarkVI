@@ -2,17 +2,18 @@ import React, {
   useContext
 } from 'react';
 
-import { StoryContext } from '../../context';
+import { StoryContext, LocationContext } from '../../context';
 import { withRouter } from 'react-router-dom';
 
 import { FiPlusSquare } from 'react-icons/fi';
 
 export const Toolbar = withRouter(props => {
+  const { community } = useContext(LocationContext);
   const { story, setStory } = useContext(StoryContext)
 
   const createStory = () => {
-    setStory({});
-    props.history.push('/app/create');
+    setStory(null);
+    props.history.push('/app/new');
   }
 
   const cancelStory = () => {
@@ -34,10 +35,12 @@ export const Toolbar = withRouter(props => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         "id": story.id,
+        "genre": story.genre,
         "title": story.title,
         "description": story.description,
-        "genre": story.genre,
         "coordinates": story.coordinates,
+        "community": community,
+        "body": story.body,
       })
     })
       .then(res => res.json())

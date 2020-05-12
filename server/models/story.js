@@ -27,7 +27,7 @@ const storySchema = new Schema({
   },
   coordinates: {
     type: [Number],
-    default: 0
+    required: true
   },
   author: {
     type: String,

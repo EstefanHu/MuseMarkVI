@@ -52,7 +52,7 @@ export const App = () => {
       <Router>
         <Switch>
           <Route exact path='/(|register|login|privacy|terms|forgot)' component={Initial} />
-          <AuthRoute exact path='/app/(|dashboard|create|community|settings)' component={Primary} />
+          <AuthRoute exact path='/app/(dashboard|new|community|settings)' component={Primary} />
           <Route component={FourOhFour} />
         </Switch>
       </Router>

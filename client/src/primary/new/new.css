@@ -1,0 +1,23 @@
+.pitch__content {
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  font-size: 1.2rem;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  height: 35px;
+  background: white;
+  border-radius: 0;
+}
+
+textarea.pitch__content {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+select.pitch__content {
+  -webkit-appearance: none;
+}
+
+.pitch__content:focus {
+  border-bottom: 2px solid var(--color-accent);
+}
