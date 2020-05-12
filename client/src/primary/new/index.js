@@ -26,11 +26,6 @@ export const New = () => {
     }
   }, [entry, setEntry]);
 
-  const startPlotting = () => {
-    toggleFeed();
-    setHasPlotted(hasPlotted => !hasPlotted);
-  }
-
   const toggleFeed = () => {
     document.getElementById('feed').classList.toggle('closedFeed');
   }
@@ -105,7 +100,10 @@ export const New = () => {
       ) : (
           <button
             className='entry__plotbutton'
-            onClick={startPlotting}
+            onClick={() => {
+              toggleFeed();
+              setHasPlotted(hasPlotted => !hasPlotted);
+            }}
           >Plot Entry</button>
         )}
     </>
