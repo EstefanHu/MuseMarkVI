@@ -13,6 +13,7 @@ import './primary.css';
 
 import { Map } from './layout/map';
 import { Feed } from './layout/feed';
+import { ToggleFeed } from './layout/toggleFeed.js';
 
 export const Primary = () => {
   const { lng, lat, community } = useContext(LocationContext);
@@ -38,6 +39,7 @@ export const Primary = () => {
       <FeedContext.Provider value={{ feed, setFeed }} >
         {lng && lat && <Map lng={lng} lat={lat} />}
         <Feed />
+        <ToggleFeed />
       </FeedContext.Provider>
 
     </EntryContext.Provider>

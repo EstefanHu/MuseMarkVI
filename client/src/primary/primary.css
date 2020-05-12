@@ -64,6 +64,44 @@
   margin-bottom: 20px;
 }
 
+.feed {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: calc(100vh - 60px);
+  background: white;
+  position: fixed;
+  top: 60px;
+  left: 80px;
+  border-right: 1px solid lightgrey;
+  padding: 30px 10px;
+  z-index: 3;
+  transition: .2s ease-in;
+}
+
+.closedFeed {
+  left: -320px;
+}
+
+#stopPlotting {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  position: fixed;
+  top: 90px;
+  left: 75px;
+  width: 55px;
+  background: white;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+
+#stopPlotting > * {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+
 .header {
   text-align: center;
 }

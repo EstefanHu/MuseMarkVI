@@ -23,9 +23,10 @@ export const Map = ({ lng, lat }) => {
   }, []);
 
   const engage = e => {
-    setEntry({
-      "coordinates": e.lngLat
-    })
+    // setEntry({
+    //   "coordinates": e.lngLat
+    // })
+    console.log(e.lngLat);
   }
 
   return api ? (

@@ -26,6 +26,15 @@ export const New = () => {
     }
   }, [entry, setEntry]);
 
+  const startPlotting = () => {
+    toggleFeed();
+    setHasPlotted(hasPlotted => !hasPlotted);
+  }
+
+  const toggleFeed = () => {
+    document.getElementById('feed').classList.toggle('closedFeed');
+  }
+
   return (
     <>
       <h1 className='header'>New Entry</h1>
@@ -90,13 +99,13 @@ export const New = () => {
           />
           <button
             className='entry__plotbutton'
-            onClick={() => setHasPlotted(hasPlotted => !hasPlotted)}
+            onClick={toggleFeed}
           >Re-Plot Entry</button>
         </>
       ) : (
           <button
             className='entry__plotbutton'
-            onClick={() => setHasPlotted(hasPlotted => !hasPlotted)}
+            onClick={startPlotting}
           >Plot Entry</button>
         )}
     </>
