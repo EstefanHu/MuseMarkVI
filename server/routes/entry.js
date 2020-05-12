@@ -9,20 +9,21 @@ router.post('/create', async (req, res) => {
       title,
       description,
       genre,
-      coordinates,
-      community
+      longitude,
+      latitude,
+      community,
+      body
     } = req.body;
     let entry;
 
-    // Check if exist
-    // Upate if does ELSE make new entry
     if (id !== undefined) {
       entry = await Entry.findByIdAndUpdate(
         { _id: id },
         {
           title: title,
           description: description,
-          coordinates: coordinates,
+          coordinates: [longitude, latitude],
+          body: body,
         }
       );
     } else {
@@ -34,6 +35,8 @@ router.post('/create', async (req, res) => {
       entry.genre = genre;
       entry.author = authorName;
       entry.community = community;
+      entry.body = body;
+      entry.coordinates = [longitude, latitude];
     }
     await entry.save();
 

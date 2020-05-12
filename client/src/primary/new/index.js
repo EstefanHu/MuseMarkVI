@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { EntryContext } from '../../context';
+import { EntryContext, LocationContext } from '../../context';
 
 import './new.css';
 
-export const New = () => {
+export const New = props => {
+  const { community } = useContext(LocationContext);
   const { entry, setEntry } = useContext(EntryContext);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -30,8 +31,39 @@ export const New = () => {
     document.getElementById('feed').classList.toggle('closedFeed');
   }
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    fetch('http://localhost:4000/entry/create', {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        description,
+        genre,
+        longitude,
+        latitude,
+        community,
+        body
+      })
+    })
+      .then(res => res.json())
+      .then(console.log)
+      .catch(console.error);
+
+    setEntry(null);
+    props.history.push('/app/dashboard');
+  }
+
   return (
-    <>
+    <form
+      onSubmit={handleSubmit}
+      className='entry__form'
+    >
       <h1 className='header'>New Entry</h1>
       <label>Title:</label>
       <input
@@ -106,6 +138,11 @@ export const New = () => {
             }}
           >Plot Entry</button>
         )}
-    </>
+      <input
+        className='entry__submit'
+        type='submit'
+        value='Publish'
+      />
+    </form>
   )
 }

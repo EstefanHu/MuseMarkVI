@@ -29,6 +29,10 @@ const entrySchema = new Schema({
     type: [Number],
     required: true
   },
+  body: {
+    type: String,
+    required: true
+  },
   author: {
     type: String,
     required: true
