@@ -52,6 +52,7 @@ export const New = props => {
       className='entry__form'
     >
       <h1 className='header'>New Entry</h1>
+
       <label>Title:</label>
       <input
         className='entry__content'
@@ -61,6 +62,7 @@ export const New = props => {
         placeholder='Title the Entry'
         required
       />
+
       <label>Description:</label>
       <textarea
         className='entry__content'
@@ -70,6 +72,7 @@ export const New = props => {
         placeholder='Describe the Entry'
         required
       />
+
       <label>Genre:</label>
       <select
         className='entry__content'
@@ -85,22 +88,32 @@ export const New = props => {
 
       {hasPlotted ? (
         <>
+          <button
+            className='entry__plotbutton'
+            onClick={toggleFeed}
+            type='button'
+          >Re-Plot Entry</button>
+
           <label>Longitude:</label>
           <input
             className='entry__content'
             type='text'
             value={longitude || 0}
             onChange={e => setLongitude(e.target.value)}
+            disabled
             required
           />
+
           <label>Latitude:</label>
           <input
             className='entry__content'
             type='text'
             value={latitude || 0}
             onChange={e => setLatitude(e.target.value)}
+            disabled
             required
           />
+
           <label>Body:</label>
           <textarea
             className='entry__content'
@@ -110,10 +123,12 @@ export const New = props => {
             placeholder='Entries body'
             required
           />
-          <button
-            className='entry__plotbutton'
-            onClick={toggleFeed}
-          >Re-Plot Entry</button>
+
+          <input
+            className='entry__submit'
+            type='submit'
+            value='Publish'
+          />
         </>
       ) : (
           <button
@@ -124,11 +139,7 @@ export const New = props => {
             }}
           >Plot Entry</button>
         )}
-      <input
-        className='entry__submit'
-        type='submit'
-        value='Publish'
-      />
+
     </form>
   )
 }
