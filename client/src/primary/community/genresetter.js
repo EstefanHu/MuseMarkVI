@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BsChevronLeft,
   BsChevronRight
 } from 'react-icons/bs';
 
 const genres = [
+  'All',
   'Fiction',
   'Poem',
   'Non-Fiction',
@@ -20,18 +21,19 @@ const genreSetter = {
 
 const genresContainer = {
   overflow: 'auto',
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
+  margin: '0 10px',
 }
 
 const genreButton = {
   display: 'inline-block',
-
   border: 'none',
   color: 'var(--accent-color-dark)',
   background: 'white',
-  fontSize: '1.2rem',
+  fontSize: '1.1rem',
   fontWeight: 'bold',
   padding: '4px 10px',
+  cursor: 'pointer',
 }
 
 export const GenreSetter = ({ setGenre }) => {
@@ -45,8 +47,9 @@ export const GenreSetter = ({ setGenre }) => {
       >
         {genres.map(item => (
           <button
+            key={item}
             style={genreButton}
-            onClick={setGenre(item)}
+            onClick={() => setGenre(item)}
           >{item}</button>
         ))}
       </span>
