@@ -1,31 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { EntryContext, LocationContext } from '../../context';
 
 import './new.css';
 
 export const New = props => {
   const { community } = useContext(LocationContext);
-  const { entry, setEntry } = useContext(EntryContext);
+  const { setEntry } = useContext(EntryContext);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [genre, setGenre] = useState('');
+  const [genre, setGenre] = useState('Fiction');
   const [longitude, setLongitude] = useState(0);
   const [latitude, setLatitude] = useState(0);
   const [body, setBody] = useState('');
   const [hasPlotted, setHasPlotted] = useState(false);
-
-  useEffect(() => {
-    if (entry === null) {
-      setEntry({
-        "title": "",
-        "description": "",
-      });
-    } else {
-      setTitle(entry.title);
-      setDescription(entry.description);
-      setGenre(entry.genre);
-    }
-  }, [entry, setEntry]);
 
   const toggleFeed = () => {
     document.getElementById('feed').classList.toggle('closedFeed');
@@ -87,8 +74,7 @@ export const New = props => {
       <select
         className='entry__content'
         type='text'
-        value={genre || ''}
-        onChange={e => setGenre(e.options[e.selectedIndex].value)}
+        onChange={e => setGenre(e.currentTarget.value)}
         required
       >
         <option value='Fiction'>Fiction</option>

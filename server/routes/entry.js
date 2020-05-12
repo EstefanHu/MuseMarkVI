@@ -16,8 +16,6 @@ router.post('/create', async (req, res) => {
     } = req.body;
     let entry;
 
-    console.log(genre);
-
     if (id !== undefined) {
       entry = await Entry.findByIdAndUpdate(
         { _id: id },
