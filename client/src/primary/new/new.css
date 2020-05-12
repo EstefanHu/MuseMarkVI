@@ -1,4 +1,4 @@
-.pitch__content {
+.entry__content {
   border: none;
   border-bottom: 1px solid lightgrey;
   font-size: 1.2rem;
@@ -9,15 +9,32 @@
   border-radius: 0;
 }
 
-textarea.pitch__content {
+textarea.entry__content {
   min-width: 100%;
   max-width: 100%;
 }
 
-select.pitch__content {
+select.entry__content {
   -webkit-appearance: none;
 }
 
-.pitch__content:focus {
+.entry__content:focus {
   border-bottom: 2px solid var(--color-accent);
+}
+
+.entry__plotbutton {
+  width: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 6px;
+  background: white;
+  margin: 0 auto;
+}
+
+.entry__plotbutton:hover,
+.entry__plotbutton:focus {
+  background: var(--color-accent-tertiary);
+  color: var(--color-accent-dark);
 }

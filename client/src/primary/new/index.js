@@ -8,6 +8,10 @@ export const New = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('');
+  const [longitude, setLongitude] = useState(0);
+  const [latitude, setLatitude] = useState(0);
+  const [body, setBody] = useState('');
+  const [hasPlotted, setHasPlotted] = useState(false);
 
   useEffect(() => {
     if (entry === null) {
@@ -25,24 +29,27 @@ export const New = () => {
   return (
     <>
       <h1 className='header'>New Entry</h1>
+      <label>Title:</label>
       <input
-        className='pitch__content'
+        className='entry__content'
         type='text'
         value={title || ''}
         onChange={e => setTitle(e.target.value)}
         placeholder='Title the Entry'
         required
       />
+      <label>Description:</label>
       <textarea
-        className='pitch__content'
+        className='entry__content'
         type='text'
         value={description || ''}
         onChange={e => setDescription(e.target.value)}
         placeholder='Describe the Entry'
         required
       />
+      <label>Genre:</label>
       <select
-        className='pitch__content'
+        className='entry__content'
         type='text'
         value={genre || ''}
         onChange={e => setGenre(e.target.value)}
@@ -53,6 +60,45 @@ export const New = () => {
         <option value='Non-Fiction'>Non-Fiction</option>
         <option value='Sci-Fi'>Sci-fi</option>
       </select>
+
+      {hasPlotted ? (
+        <>
+          <label>Longitude:</label>
+          <input
+            className='entry__content'
+            type='text'
+            value={longitude || 0}
+            onChange={e => setLongitude(e.target.value)}
+            required
+          />
+          <label>Latitude:</label>
+          <input
+            className='entry__content'
+            type='text'
+            value={latitude || 0}
+            onChange={e => setLatitude(e.target.value)}
+            required
+          />
+          <label>Body:</label>
+          <textarea
+            className='entry__content'
+            type='text'
+            value={body || ''}
+            onChange={e => setBody(e.target.value)}
+            placeholder='Entries body'
+            required
+          />
+          <button
+            className='entry__plotbutton'
+            onClick={() => setHasPlotted(hasPlotted => !hasPlotted)}
+          >Re-Plot Entry</button>
+        </>
+      ) : (
+          <button
+            className='entry__plotbutton'
+            onClick={() => setHasPlotted(hasPlotted => !hasPlotted)}
+          >Plot Entry</button>
+        )}
     </>
   )
 }
