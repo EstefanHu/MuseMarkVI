@@ -75,7 +75,7 @@
   top: 60px;
   left: 80px;
   border-right: 1px solid lightgrey;
-  padding: 30px 10px;
+  padding-top: 30px;
   z-index: 3;
   transition: .2s ease-in;
   overflow-x: scroll;

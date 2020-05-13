@@ -30,8 +30,8 @@ const entryDescription = {
 
 const actions = {
   display: 'flex',
-  color: 'lightgrey',
-  justifyContent: 'space-around'
+  justifyContent: 'space-around',
+  fontSize: '.9rem',
 }
 
 
