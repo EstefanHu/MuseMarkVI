@@ -5,6 +5,8 @@ import { EntryContext } from '../../context';
 
 import { MapCreate } from './mapfeatures/mapcreate';
 import { Loading } from './loading';
+import { MapDashboard } from './mapfeatures/mapdashboard';
+import { MapCommunity } from './mapfeatures/mapcommunity';
 
 export const Map = ({ lng, lat }) => {
   const { entry, setEntry } = useContext(EntryContext);
@@ -51,7 +53,11 @@ export const Map = ({ lng, lat }) => {
         }}
         onClick={engage}
       >
-        <Route exact path='/app/create' component={MapCreate} />
+        
+        <Route path='/app/new' component={MapCreate} />
+        <Route path='/app/dashboard' component={MapDashboard} />
+        <Route path='/app/community' component={MapCommunity} />
+
       </ReactMapGl>
     </div>
   ) : (

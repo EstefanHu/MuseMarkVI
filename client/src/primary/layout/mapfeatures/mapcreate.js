@@ -3,10 +3,15 @@ import { EntryContext } from '../../../context';
 import { MdLocationOn } from 'react-icons/md';
 import { Marker } from 'react-map-gl';
 
+const icon = {
+  width: '50px',
+  height: '50px',
+}
+
 export const MapCreate = () => {
   const { entry } = useContext(EntryContext);
 
-  return (
+  return entry && (
     <Marker
       latitude={entry.latitude}
       longitude={entry.longitude}
@@ -14,7 +19,7 @@ export const MapCreate = () => {
       offsetTop={-47}
     >
       <MdLocationOn
-        className='map__icon' />
+        style={icon} />
     </Marker>
   )
 }
