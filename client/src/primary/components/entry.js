@@ -33,7 +33,7 @@ const actions = {
 
 
 // TODO: Add Link to author profiles.
-export const Entry = ({ _id, genre, title, description, author, authorId, isOwned }) => {
+export const Entry = ({ id, genre, title, description, author, isOwned }) => {
 
   return (
     <article style={article}>
@@ -44,7 +44,7 @@ export const Entry = ({ _id, genre, title, description, author, authorId, isOwne
       <h1 style={entryTitle}>{title}</h1>
       <p style={entryDescription}>{description}</p>
       {isOwned ?
-        <privateEntryActions styles={actions} id={_id} /> : <EntryActions styles={actions} />
+        <privateEntryActions styles={actions} id={id} /> : <EntryActions styles={actions} id={id} />
       }
     </article>
   )

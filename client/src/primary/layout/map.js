@@ -40,7 +40,7 @@ export const Map = ({ lng, lat }) => {
     sessionStorage.removeItem('action');
   }
 
-  return api ? (
+  return api && lng && lat ? (
     <div id='mapboxView'>
       <ReactMapGl
         {...viewport}

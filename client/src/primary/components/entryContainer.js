@@ -16,12 +16,11 @@ export const EntryContainer = ({ entries }) => {
   const { user } = useContext(UserContext);
 
   return (
-    <section
-      style={entryContainer}
-    >
+    <section style={entryContainer}>
       {entries ? entries.map(item => (
         <Entry
           key={item._id}
+          id={item._id}
           genre={item.genre}
           author={item.author}
           credibility={item.credibility}
