@@ -16,16 +16,14 @@ const info = {
 
 }
 
-const credibility = {
 
-}
-
+// TODO: Add Link to author profiles.
 export const Entry = props => {
   return (
     <article style={article}>
       <span style={header}>
-        <p style={info}>{props.genre} by {props.author}</p>
-        <p style={credibility}>{props.credibility}</p>
+        <p style={info}>{props.genre} by {props.author}</p> 
+        {/* <p style={credibility}>{props.credibility}</p> */}
       </span>
       <h1>{props.title}</h1>
       <p>{props.description}</p>

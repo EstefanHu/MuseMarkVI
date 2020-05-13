@@ -34,6 +34,7 @@ router.post('/create', async (req, res) => {
       entry.description = description;
       entry.genre = genre;
       entry.author = authorName;
+      entry.authorId = authorInfo._id;
       entry.community = community;
       entry.body = body;
       entry.coordinates = [longitude, latitude];
