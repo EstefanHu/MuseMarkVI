@@ -109,7 +109,7 @@
 
 #loading {
   margin: 0 auto;
-  width: 100px;
+  width: fit-content;
   padding-top: 50vh;
 }
 
@@ -161,7 +161,7 @@
 
 #feedLoader {
   margin: 0 auto;
-  width: 100px;
+  width: fit-content;
 }
 
 #feedLoader>p {
@@ -202,7 +202,7 @@
   50% {
     transform: translateY(0px);
   }
-  
+
   100% {
     transform: translateY(10px);
   }
