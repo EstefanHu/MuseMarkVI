@@ -78,6 +78,7 @@
   padding: 30px 10px;
   z-index: 3;
   transition: .2s ease-in;
+  overflow-x: scroll;
 }
 
 .closedFeed {

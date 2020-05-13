@@ -8,7 +8,7 @@ import { New } from '../new';
 export const Feed = () => {
   return (
     <section
-      className='feed'
+      className='feed noBar'
       id='feed'
     >
       <Route exact path='/app/dashboard' component={Dashboard} />
