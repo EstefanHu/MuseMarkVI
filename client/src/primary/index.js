@@ -6,7 +6,9 @@ import { Nav } from './layout/nav.js';
 import {
   EntryContext,
   LocationContext,
-  FeedContext
+  FeedContext,
+  LibraryContext,
+  GenreContext
 } from '../context';
 
 import './primary.css';
@@ -17,7 +19,9 @@ import { Feed } from './layout/feed';
 export const Primary = () => {
   const { lng, lat, community } = useContext(LocationContext);
   const [entry, setEntry] = useState(null);
+  const [library, setLibrary] = useState([]);
   const [feed, setFeed] = useState([]);
+  const [genre, setGenre] = useState('All');
 
   useEffect(() => {
     fetch('http://localhost:4000/entry/community/'
@@ -35,10 +39,14 @@ export const Primary = () => {
       <Toolbar />
       <Nav />
 
-      <FeedContext.Provider value={{ feed, setFeed }} >
-        {lng && lat && <Map lng={lng} lat={lat} />}
-        <Feed />
-      </FeedContext.Provider>
+      <LibraryContext.Provider value={{ library, setLibrary }}>
+        <FeedContext.Provider value={{ feed, setFeed }} >
+          <GenreContext.Provider value={{ genre, setGenre }}>
+            {lng && lat && <Map lng={lng} lat={lat} />}
+            <Feed />
+          </GenreContext.Provider>
+        </FeedContext.Provider>
+      </LibraryContext.Provider>
 
     </EntryContext.Provider>
   )
