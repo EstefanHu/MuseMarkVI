@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { FeedContext } from '../../../context';
+import { SubFeedContext } from '../../../context';
 
 export const MapCommunity = () => {
-  const { feed } = useContext(FeedContext);
-  
-  return feed && (
+  const { subFeed } = useContext(SubFeedContext);
+
+  return subFeed && (
     <>
       
     </>
