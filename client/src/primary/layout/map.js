@@ -7,7 +7,7 @@ import { MapCreate } from './mapfeatures/mapcreate';
 import { Loading } from './loading';
 
 export const Map = ({ lng, lat }) => {
-  const { setEntry } = useContext(EntryContext);
+  const { entry, setEntry } = useContext(EntryContext);
   const [viewport, setViewport] = useState({
     latitude: lat,
     longitude: lng,
@@ -25,10 +25,19 @@ export const Map = ({ lng, lat }) => {
   }, []);
 
   const engage = e => {
-    // setEntry({
-    //   "coordinates": e.lngLat
-    // })
-    console.log(e.lngLat);
+    const action = sessionStorage.getItem('action');
+    switch (action) {
+      case 'Plot':
+        setEntry({...entry , 
+          'longitude': e.lngLat[0],
+          'latitude': e.lngLat[1]
+        });
+        break;
+      default:
+        console.log(e.lngLat);
+    }
+    
+    sessionStorage.removeItem('action');
   }
 
   return api ? (

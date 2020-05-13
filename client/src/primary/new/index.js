@@ -2,19 +2,17 @@ import React, { useState, useContext } from 'react';
 import { EntryContext, LocationContext } from '../../context';
 
 import './new.css';
-import { LoadFeed } from '../layout/loadFeed';
+import { PlotBtn } from './plotBtn';
+import { PostPlotForm } from './postPlotForm';
+import { PrePlotForm } from './prePlotForm';
 
 export const New = props => {
   const { community } = useContext(LocationContext);
-  const { setEntry } = useContext(EntryContext);
-  const [title, setTitle] = useState('');
+  const { entry, setEntry } = useContext(EntryContext);
+  const [title, setTitle] = useState('')
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('Fiction');
-  const [longitude, setLongitude] = useState(0);
-  const [latitude, setLatitude] = useState(0);
   const [body, setBody] = useState('');
-  const [isPlotting, setsPlotting] = useState(false);
-  const [hasPlotted, setHasPlotted] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -30,8 +28,8 @@ export const New = props => {
         title,
         description,
         genre,
-        longitude,
-        latitude,
+        longitude: entry.longitude,
+        latitude: entry.latitude,
         community,
         body
       })
@@ -49,95 +47,18 @@ export const New = props => {
       onSubmit={handleSubmit}
       className='entry__form'
     >
-      <h1 className='header'>New Entry</h1>
-
-      <label>Title:</label>
-      <input
-        className='entry__content'
-        type='text'
-        value={title || ''}
-        onChange={e => setTitle(e.target.value)}
-        placeholder='Title the Entry'
-        required
+      <PrePlotForm
+        title={title} setTitle={e => setTitle(e)}
+        description={description} setDescription={e => setDescription(e)}
+        setGenre={e => setGenre(e)}
       />
-
-      <label>Description:</label>
-      <textarea
-        className='entry__content'
-        type='text'
-        value={description || ''}
-        onChange={e => setDescription(e.target.value)}
-        placeholder='Describe the Entry'
-        required
-      />
-
-      <label>Genre:</label>
-      <select
-        className='entry__content'
-        type='text'
-        onChange={e => setGenre(e.currentTarget.value)}
-        required
-      >
-        <option value='Fiction'>Fiction</option>
-        <option value='Poem'>Poem</option>
-        <option value='Non-Fiction'>Non-Fiction</option>
-        <option value='Sci-Fi'>Sci-fi</option>
-      </select>
-
-      {isPlotting ? (
-        <LoadFeed />
-      ) : (
-          <button
-            className='entry__plotbutton'
-            onClick={() => setsPlotting(isPlotting => !isPlotting)}
-          >Plot Entry</button>
-        )}
-
-      {hasPlotted &&
-        <>
-          <button
-            className='entry__plotbutton'
-            type='button'
-          >Re-Plot Entry</button>
-
-          <label>Longitude:</label>
-          <input
-            className='entry__content'
-            type='text'
-            value={longitude || 0}
-            onChange={e => setLongitude(e.target.value)}
-            disabled
-            required
-          />
-
-          <label>Latitude:</label>
-          <input
-            className='entry__content'
-            type='text'
-            value={latitude || 0}
-            onChange={e => setLatitude(e.target.value)}
-            disabled
-            required
-          />
-
-          <label>Body:</label>
-          <textarea
-            className='entry__content'
-            type='text'
-            value={body || ''}
-            onChange={e => setBody(e.target.value)}
-            placeholder='Entries body'
-            required
-          />
-
-          <input
-            className='entry__submit'
-            type='submit'
-            value='Publish'
-          />
-        </>
+      {entry != null ? // TODO: Will not last upgrade. Needs to be made resilient
+        <PostPlotForm
+          longitude={entry.longitude}
+          latitude={entry.latitude}
+          body={body} setBody={e => setBody(e)}
+        /> : <PlotBtn />
       }
-
     </form>
   )
 }
