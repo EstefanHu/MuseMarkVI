@@ -7,7 +7,7 @@ export const Toolbar = withRouter(props => {
   const { entry, setEntry } = useContext(EntryContext)
 
   const createEntry = () => {
-    setEntry(null);
+    setEntry({});
     props.history.push('/app/new');
   }
 

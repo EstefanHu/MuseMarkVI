@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Route } from 'react-router-dom';
 import ReactMapGl from 'react-map-gl';
-
 import { EntryContext } from '../../context';
+
+import { MapCreate } from './mapfeatures/mapcreate';
 import { Loading } from './loading';
 
 export const Map = ({ lng, lat }) => {
@@ -40,6 +42,7 @@ export const Map = ({ lng, lat }) => {
         }}
         onClick={engage}
       >
+        <Route exact path='/app/create' component={MapCreate} />
       </ReactMapGl>
     </div>
   ) : (
