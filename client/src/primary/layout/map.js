@@ -53,10 +53,10 @@ export const Map = ({ lng, lat }) => {
         }}
         onClick={engage}
       >
-        
-        <Route path='/app/new' component={MapCreate} />
-        <Route path='/app/dashboard' component={MapDashboard} />
-        <Route path='/app/community' component={MapCommunity} />
+
+        <Route exact path='/app/new' component={MapCreate} />
+        <Route exact path='/app/dashboard' component={MapDashboard} />
+        <Route exact path='/app/community' component={MapCommunity} />
 
       </ReactMapGl>
     </div>
