@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../context';
+import React from 'react';
 
 import { Entry } from './entry';
 import { LoadFeed } from '../layout/loadFeed';
@@ -13,8 +12,6 @@ const entryContainer = {
 }
 
 export const EntryContainer = ({ entries }) => {
-  const { user } = useContext(UserContext);
-
   return (
     <section style={entryContainer}>
       {entries ? entries.map(item => (

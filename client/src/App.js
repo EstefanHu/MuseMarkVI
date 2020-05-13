@@ -10,7 +10,7 @@ import Cookie from 'js-cookie';
 import { Initial } from './initial';
 import { Primary } from './primary';
 import { FourOhFour } from './ERROR/FourOhFour';
-import { LocationContext, UserContext } from './context';
+import { LocationContext } from './context';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css';
@@ -51,7 +51,6 @@ const geoLocate = (setLng, setLat, count) => {
 }
 
 export const App = () => {
-  const [user, setUser] = useState(null);
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
   const [community, setCommunity] = useState(null);
@@ -68,16 +67,14 @@ export const App = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <LocationContext.Provider value={{ lng, setLng, lat, setLat, community, setCommunity }}>
-        <Router>
-          <Switch>
-            <Route exact path='/(|register|login|privacy|terms|forgot)' component={Initial} />
-            <AuthRoute exact path='/app/(dashboard|new|community|settings)' component={Primary} />
-            <Route component={FourOhFour} />
-          </Switch>
-        </Router>
-      </LocationContext.Provider>
-    </UserContext.Provider>
+    <LocationContext.Provider value={{ lng, setLng, lat, setLat, community, setCommunity }}>
+      <Router>
+        <Switch>
+          <Route exact path='/(|register|login|privacy|terms|forgot)' component={Initial} />
+          <AuthRoute exact path='/app/(dashboard|new|community|settings)' component={Primary} />
+          <Route component={FourOhFour} />
+        </Switch>
+      </Router>
+    </LocationContext.Provider>
   )
 }
