@@ -31,6 +31,7 @@ const AuthRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+// TODO: add session storage of geolocation
 const geoLocate = (setLng, setLat, count) => {
   navigator.geolocation.getCurrentPosition(position => {
     setLng(position.coords.longitude);

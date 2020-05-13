@@ -1,11 +1,19 @@
 import React, { useEffect } from 'react';
 
-export const Delete = props => {
+const deleteForm = {
+  width: '300px',
+  height: 'fit-content',
+  background: 'white',
+  margin: '40vh auto',
+  padding: '20px 30px',
+}
+
+export const Delete = ({ id, toggleIsDeleting }) => {
   useEffect(() => {
     const modal = document.getElementById('deleteModal');
     const modalToggle = e => {
       if (e.target === modal) {
-        props.toggleIsDeleting();
+        toggleIsDeleting();
       }
     }
     modal.addEventListener('click', modalToggle);
@@ -30,15 +38,15 @@ export const Delete = props => {
 
   return (
     <div className='modal' id='deleteModal'>
-      <div className='modal-content' id='deleteStory__form'>
-        <span className='close' onClick={() => { props.toggleIsDeleting() }}>&times;</span>
+      <div className='modal-content' style={deleteForm}>
+        <span className='close' onClick={() => { toggleIsDeleting() }}>&times;</span>
         <h1>Are you sure?</h1>
         <p>Deleted stories cant be recovered.</p>
-        <form onSubmit={() => handleDelete(props.id)}>
+        <form onSubmit={() => handleDelete(id)}>
           <button type='submit'>Delete Entry</button>
         </form>
         <button
-          onClick={() => props.toggleIsDeleting()}
+          onClick={() => toggleIsDeleting()}
         >Keep Entry</button>
       </div>
     </div>

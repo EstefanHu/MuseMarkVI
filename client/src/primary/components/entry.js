@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Route,
   Link
 } from 'react-router-dom';
+
+import { Delete } from './delete';
 
 const article = {
   padding: '10px 15px',
@@ -30,13 +32,22 @@ const entryDescription = {
 
 const actions = {
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'space-evenly',
   fontSize: '.9rem',
 }
 
+const actionButton = {
+  border: 'none',
+  background: 'white',
+  fontSize: '0.9rem',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  color: 'grey'
+}
 
 // TODO: Add Link to author profiles.
 export const Entry = ({ id, genre, title, description, author }) => {
+  const [isDeleting, setIsDeleting] = useState(false);
 
   return (
     <article style={article}>
@@ -47,9 +58,23 @@ export const Entry = ({ id, genre, title, description, author }) => {
       <h1 style={entryTitle}>{title}</h1>
       <p style={entryDescription}>{description}</p>
       <span style={actions}>
-        <Link to='/app/read'>Read More</Link>
+        <Link
+          to='/app/read'
+          style={actionButton}
+        >Read More</Link>
         <Route exact path='/app/dashboard'>
-
+          <button
+            style={actionButton}
+            onClick={() => setIsDeleting(isDeleting => !isDeleting)}
+          >Delete Story</button>
+          {isDeleting &&
+            <Delete
+              id={id}
+              toggleIsDeleting={
+                () => setIsDeleting(isDeleting => !isDeleting)
+              }
+            />
+          }
         </Route>
       </span>
     </article>
