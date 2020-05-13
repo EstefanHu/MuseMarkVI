@@ -16,10 +16,6 @@ export const New = props => {
   const [isPlotting, setsPlotting] = useState(false);
   const [hasPlotted, setHasPlotted] = useState(false);
 
-  const toggleFeed = () => {
-    document.getElementById('feed').classList.toggle('closedFeed');
-  }
-
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -140,7 +136,6 @@ export const New = props => {
             value='Publish'
           />
         </>
-
       }
 
     </form>
