@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { EntryContext, LocationContext } from '../../context';
 
 import './new.css';
@@ -13,6 +13,13 @@ export const New = props => {
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('Fiction');
   const [body, setBody] = useState('');
+
+    useEffect(() => {
+      return () => {
+        setEntry(null);
+        sessionStorage.removeItem('action');
+      }
+    });
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -52,7 +59,7 @@ export const New = props => {
         description={description} setDescription={e => setDescription(e)}
         setGenre={e => setGenre(e)}
       />
-      {entry != null ? // TODO: Will not last upgrade. Needs to be made resilient
+      {entry !== null ? // TODO: Will not last upgrade. Needs to be made resilient
         <PostPlotForm
           longitude={entry.longitude}
           latitude={entry.latitude}

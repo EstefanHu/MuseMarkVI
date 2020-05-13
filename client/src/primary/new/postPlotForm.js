@@ -5,6 +5,7 @@ export const PostPlotForm = ({ longitude, latitude, body, setBody }) => (
     <button
       className='entry__plotbutton'
       type='button'
+      onClick={() => sessionStorage.setItem('action', 'Plot')}
     >Re-Plot Entry</button>
 
     <label>Longitude:</label>
