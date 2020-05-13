@@ -13,7 +13,7 @@ import './community.css';
 
 export const Community = () => {
   const { community } = useContext(LocationContext);
-  const { genre } = useContext(GenreContext);
+  const { genre, setGenre } = useContext(GenreContext);
   const { feed } = useContext(FeedContext);
   const [entries, setEntries] = useState(null);
 
@@ -26,7 +26,9 @@ export const Community = () => {
       if (item.genre === genre) toFeed.push(item);
     });
     setEntries(toFeed);
-  }, [feed, genre]);
+
+    return () => setGenre('All');
+  }, [feed, genre, setGenre]);
 
   return (
     <>
