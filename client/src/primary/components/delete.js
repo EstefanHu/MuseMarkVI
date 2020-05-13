@@ -21,6 +21,7 @@ const deleteButton = {
   color: 'white',
   border: 'none',
   borderRadius: '5px',
+  padding: '6px 10px',
 }
 
 const cancelButton = {
@@ -29,6 +30,7 @@ const cancelButton = {
   fontSize: '1rem',
   border: '1px solid lightgrey',
   borderRadius: '5px',
+  padding: '6px 10px',
 }
 
 export const Delete = ({ id, toggleIsDeleting }) => {
