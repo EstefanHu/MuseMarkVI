@@ -8,6 +8,29 @@ const deleteForm = {
   padding: '20px 30px',
 }
 
+const horizontal = {
+  display: 'flex',
+  justifyContent: 'space-between',
+}
+
+const deleteButton = {
+  width: '100%',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  background: 'var(--color-accent)',
+  color: 'white',
+  border: 'none',
+  borderRadius: '5px',
+}
+
+const cancelButton = {
+  width: '48%',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  border: '1px solid lightgrey',
+  borderRadius: '5px',
+}
+
 export const Delete = ({ id, toggleIsDeleting }) => {
   useEffect(() => {
     const modal = document.getElementById('deleteModal');
@@ -42,12 +65,18 @@ export const Delete = ({ id, toggleIsDeleting }) => {
         <span className='close' onClick={() => { toggleIsDeleting() }}>&times;</span>
         <h1>Are you sure?</h1>
         <p>Deleted stories cant be recovered.</p>
-        <form onSubmit={() => handleDelete(id)}>
-          <button type='submit'>Delete Entry</button>
-        </form>
-        <button
-          onClick={() => toggleIsDeleting()}
-        >Keep Entry</button>
+        <span style={horizontal}>
+          <form onSubmit={() => handleDelete(id)}>
+            <button
+              style={deleteButton}
+              type='submit'
+            >Delete Entry</button>
+          </form>
+          <button
+            style={cancelButton}
+            onClick={() => toggleIsDeleting()}
+          >Keep Entry</button>
+        </span>
       </div>
     </div>
   )
