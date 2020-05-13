@@ -31,17 +31,34 @@ const AuthRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+const geoLocate = (setLng, setLat, count) => {
+  navigator.geolocation.getCurrentPosition(position => {
+    setLng(position.coords.longitude);
+    setLat(position.coords.latitude);
+    console.log('Geolocation Successful');
+  }, error => {
+    switch (error.code) {
+      case 1:
+        return alert('Looks Like we dont have permission to place your location. Please update our permissions so we can accuratly sign you in');
+      case 3:
+        return geoLocate(setLng, setLat, count + 1);
+      default:
+        if (count > 10) return alert('Unable to locate User');
+    }
+  }, { timeout: 1000 });
+}
+
 export const App = () => {
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
   const [community, setCommunity] = useState(null);
 
   useEffect(() => {
+    geoLocate(setLng, setLat, 0);
+    
     fetch('http://ip-api.com/json')
       .then(res => res.json())
       .then(res => {
-        setLng(res.lon);
-        setLat(res.lat);
         setCommunity(res.city);
       })
       .catch(console.error);
