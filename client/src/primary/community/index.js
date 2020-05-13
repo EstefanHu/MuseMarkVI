@@ -5,8 +5,8 @@ import {
 } from '../../context';
 
 import { GenreSetter } from './genresetter';
-import { Entry } from '../components/entry';
-import { LoadFeed } from '../layout/loadFeed';
+
+import { EntryContainer } from '../components/entryContainer';
 
 import './community.css';
 
@@ -29,24 +29,9 @@ export const Community = () => {
 
   return (
     <>
-      <h1
-        className='header'
-      >Entries in {community}</h1>
-
+      <h1 className='header'>Entries in {community}</h1>
       <GenreSetter setGenre={newGenre => setGenre(newGenre)} />
-
-      {entries ? entries.map(item => (
-        <Entry
-          key={item._id}
-          genre={item.genre}
-          author={item.author}
-          credibility={item.credibility}
-          title={item.title}
-          description={item.description}
-        />
-      )) : (
-          <LoadFeed />
-        )}
+      <EntryContainer entries={entries} />
     </>
   )
 }
