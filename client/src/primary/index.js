@@ -21,7 +21,7 @@ export const Primary = () => {
   const [entry, setEntry] = useState(null);
   const [library, setLibrary] = useState([]);
   const [feed, setFeed] = useState([]);
-  const [subFeed, setSubFeed] = useState('All');
+  const [subFeed, setSubFeed] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:4000/entry/community/'
