@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
   LocationContext,
-  FeedContext
+  FeedContext,
+  GenreContext
 } from '../../context';
 
 import { GenreSetter } from './genresetter';
@@ -12,9 +13,9 @@ import './community.css';
 
 export const Community = () => {
   const { community } = useContext(LocationContext);
+  const { genre } = useContext(GenreContext);
   const { feed } = useContext(FeedContext);
   const [entries, setEntries] = useState(null);
-  const [genre, setGenre] = useState('All');
 
   useEffect(() => {
     setEntries(null);
@@ -30,7 +31,7 @@ export const Community = () => {
   return (
     <>
       <h1 className='header'>Entries in {community}</h1>
-      <GenreSetter setGenre={newGenre => setGenre(newGenre)} />
+      <GenreSetter />
       <EntryContainer entries={entries} />
     </>
   )

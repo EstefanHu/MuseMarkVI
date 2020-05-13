@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   BsChevronLeft,
   BsChevronRight
 } from 'react-icons/bs';
+import { GenreContext } from '../../context';
 
 const genres = [
   'All',
@@ -38,7 +39,9 @@ const genreButton = {
   cursor: 'pointer',
 }
 
-export const GenreSetter = ({ setGenre }) => {
+export const GenreSetter = () => {
+  const { setGenre } = useContext(GenreContext);
+
   return (
     <div style={genreSetter}>
       <BsChevronLeft />
