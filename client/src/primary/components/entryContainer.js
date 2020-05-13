@@ -8,12 +8,14 @@ const entryContainer = {
   flexDirection: 'column',
   width: '100%',
   overflowY: 'scroll',
-  borderBottom: '10px solid lightgrey',
 }
 
 export const EntryContainer = ({ entries }) => {
   return (
-    <section style={entryContainer}>
+    <section
+      style={entryContainer}
+      className='noBar'
+    >
       {entries ? entries.map(item => (
         <Entry
           key={item._id}

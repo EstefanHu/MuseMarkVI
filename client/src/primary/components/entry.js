@@ -30,7 +30,7 @@ const entryDescription = {
 
 const actions = {
   display: 'flex',
-  color: 'light-grey',
+  color: 'lightgrey',
   justifyContent: 'space-around'
 }
 
@@ -46,7 +46,7 @@ export const Entry = ({ id, genre, title, description, author }) => {
       </span>
       <h1 style={entryTitle}>{title}</h1>
       <p style={entryDescription}>{description}</p>
-      <span>
+      <span style={actions}>
         <Link to='/app/read'>Read More</Link>
         <Route exact path='/app/dashboard'>
 
