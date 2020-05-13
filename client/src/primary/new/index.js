@@ -19,7 +19,7 @@ export const New = props => {
         setEntry(null);
         sessionStorage.removeItem('action');
       }
-    });
+    }, [setEntry]);
 
   const handleSubmit = e => {
     e.preventDefault();
