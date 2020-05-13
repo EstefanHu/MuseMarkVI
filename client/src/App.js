@@ -40,6 +40,8 @@ const geoLocate = (setLng, setLat, count) => {
     switch (error.code) {
       case 1:
         return alert('Looks Like we dont have permission to place your location. Please update our permissions so we can accuratly sign you in');
+      case 2:
+        return alert('Unable to connect to server');
       case 3:
         return geoLocate(setLng, setLat, count + 1);
       default:
@@ -55,7 +57,7 @@ export const App = () => {
 
   useEffect(() => {
     geoLocate(setLng, setLat, 0);
-    
+
     fetch('http://ip-api.com/json')
       .then(res => res.json())
       .then(res => {
