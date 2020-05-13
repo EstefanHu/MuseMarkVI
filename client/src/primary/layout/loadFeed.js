@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const LoadFeed = () => (
-  <div id='loading' >
+  <div id='feedLoader' >
     <p></p>
   </div>
 )

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { EntryContext, LocationContext } from '../../context';
 
 import './new.css';
+import { LoadFeed } from '../layout/loadFeed';
 
 export const New = props => {
   const { community } = useContext(LocationContext);
@@ -12,6 +13,7 @@ export const New = props => {
   const [longitude, setLongitude] = useState(0);
   const [latitude, setLatitude] = useState(0);
   const [body, setBody] = useState('');
+  const [isPlotting, setsPlotting] = useState(false);
   const [hasPlotted, setHasPlotted] = useState(false);
 
   const toggleFeed = () => {
@@ -86,11 +88,19 @@ export const New = props => {
         <option value='Sci-Fi'>Sci-fi</option>
       </select>
 
-      {hasPlotted ? (
+      {isPlotting ? (
+        <LoadFeed />
+      ) : (
+          <button
+            className='entry__plotbutton'
+            onClick={() => setsPlotting(isPlotting => !isPlotting)}
+          >Plot Entry</button>
+        )}
+
+      {hasPlotted &&
         <>
           <button
             className='entry__plotbutton'
-            onClick={toggleFeed}
             type='button'
           >Re-Plot Entry</button>
 
@@ -130,15 +140,8 @@ export const New = props => {
             value='Publish'
           />
         </>
-      ) : (
-          <button
-            className='entry__plotbutton'
-            onClick={() => {
-              toggleFeed();
-              setHasPlotted(hasPlotted => !hasPlotted);
-            }}
-          >Plot Entry</button>
-        )}
+
+      }
 
     </form>
   )
