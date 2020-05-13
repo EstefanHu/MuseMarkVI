@@ -1,5 +1,8 @@
 import React from 'react';
-import { EntryActions } from './entryActions';
+import {
+  Route,
+  Link
+} from 'react-router-dom';
 
 const article = {
   padding: '10px 15px',
@@ -33,7 +36,7 @@ const actions = {
 
 
 // TODO: Add Link to author profiles.
-export const Entry = ({ id, genre, title, description, author, isOwned }) => {
+export const Entry = ({ id, genre, title, description, author }) => {
 
   return (
     <article style={article}>
@@ -43,9 +46,12 @@ export const Entry = ({ id, genre, title, description, author, isOwned }) => {
       </span>
       <h1 style={entryTitle}>{title}</h1>
       <p style={entryDescription}>{description}</p>
-      {isOwned ?
-        <privateEntryActions styles={actions} id={id} /> : <EntryActions styles={actions} id={id} />
-      }
+      <span>
+        <Link to='/app/read'>Read More</Link>
+        <Route exact path='/app/dashboard'>
+
+        </Route>
+      </span>
     </article>
   )
 }

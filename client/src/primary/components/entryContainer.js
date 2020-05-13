@@ -23,7 +23,6 @@ export const EntryContainer = ({ entries }) => {
           credibility={item.credibility}
           title={item.title}
           description={item.description}
-          isOwned={item.authorId === user.userId}
         />
       )) : (
           <LoadFeed />
