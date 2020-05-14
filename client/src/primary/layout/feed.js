@@ -7,6 +7,7 @@ import { New } from '../new';
 import { Settings } from '../settings';
 
 export const Feed = () => {
+  
   return (
     <section
       className='feed noBar'

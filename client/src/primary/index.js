@@ -36,7 +36,7 @@ export const Primary = () => {
   ]);
 
 
-  // TODO: Converge into one API call
+  //TODO: Converge into one API call
   useEffect(() => {
     fetch('http://localhost:4000/entry/community/'
       + community, {
@@ -54,7 +54,23 @@ export const Primary = () => {
       .then(res => res.json())
       .then(res => setLibrary(res.entries))
       .catch(console.error);
-  }, [library])
+  }, []);
+
+  // useEffect(() => {
+  //   fetch('http://localhost:4000/entry/populate/' + community, {
+  //     credentials: 'include'
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       setLibrary(res.library);
+  //       setFeed(res.feed);
+  //     })
+  //     .catch(console.error);
+  // }, [community]);
+
+  useEffect(() => {
+    console.log('primary');
+  })
 
   return (
     <EntryContext.Provider value={{ entry, setEntry }}>
