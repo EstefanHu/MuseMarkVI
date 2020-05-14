@@ -12,10 +12,6 @@ export const Profile = props => {
     setIsUpdating(false);
   }
 
-  useEffect(() => {
-    console.log(props);
-  }, [props]);
-
   return isUpdating ? (
     <form onSubmit={handleSubmit}>
       <input

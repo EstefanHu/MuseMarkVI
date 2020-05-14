@@ -11,13 +11,19 @@ export const Settings = () => {
       credentials: 'include'
     })
       .then(res => res.json())
-      .then(res => setUser(res))
+      .then(res => { setUser(res); console.log(res.firstName) })
       .catch(console.error);
   }, []);
 
   return (
     <>
-      <Profile user={user} />
+      {user &&
+        <Profile
+          firstName={user.firstName}
+          lastName={user.lastName}
+          email={user.email}
+        />
+      }
       <Logout />
     </>
   )
