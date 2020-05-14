@@ -1,5 +1,7 @@
-.settings__form {
+.settings {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form__input {

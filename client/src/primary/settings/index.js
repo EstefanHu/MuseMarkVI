@@ -19,7 +19,7 @@ export const Settings = () => {
   }, []);
 
   return (
-    <>
+    <div className='settings'>
       {user &&
         <Profile
           firstName={user.firstName}
@@ -29,6 +29,6 @@ export const Settings = () => {
       }
       <Password />
       <Logout />
-    </>
+    </div>
   )
 }

@@ -12,7 +12,7 @@ export const Logout = () => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   return isLoggingOut ?
-    <span>
+    <span className='form__sprawl'>
       <button
         style={button}
       >Yes, Log me out</button>

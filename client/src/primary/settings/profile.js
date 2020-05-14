@@ -34,7 +34,7 @@ export const Profile = props => {
   }
 
   return isUpdating ? (
-    <form onSubmit={handleSubmit} className='settings__form'>
+    <form onSubmit={handleSubmit}>
       <input
         type='text'
         className='form__input'
