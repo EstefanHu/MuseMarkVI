@@ -9,6 +9,25 @@ export const Profile = props => {
   const handleSubmit = e => {
     e.preventDefault();
 
+    fetch('http://localhost:4000/user/update', {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email
+      })
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.error) alert(res.error);
+      })
+      .catch(console.error);
+
     setIsUpdating(false);
   }
 
@@ -41,8 +60,8 @@ export const Profile = props => {
       <span className='form__sprawl'>
         <input type='submit' value='Save' />
         <button
-        type='button'
-        onClick={() => setIsUpdating(false)}
+          type='button'
+          onClick={() => setIsUpdating(false)}
         >Cancel Changes</button>
       </span>
     </form>

@@ -62,20 +62,46 @@ router.get('/profile', async (req, res) => {
   }
 });
 
-router.post('/update/:id', async (req, res) => {
+router.post('/update', async (req, res) => {
   try {
-    let checkIfUserExist = await User.findOne({ email: req.body.email });
-    if (checkIfUserExist) res.json({ 'Error': 'User Already exists' });
+    const {
+      firstName,
+      lastName,
+      email
+    } = req.body;
 
-    let user = await User.findById(req.params.id);
-    user.firstName = req.body.firstName;
-    user.lastName = req.body.lastName;
-    user.email = req.body.email;
-    user.password = req.body.password;
-    user = await user.save();
-    res.send('Successfully updated User');
+    let check = await User.findOne({ email });
+
+    if (check) {
+      if (check._id != req.session.userID)
+        return res.json({ Error: 'Email already in use' });
+
+      await check.update({
+        firstName,
+        lastName
+      });
+    } else {
+      await User.findByIdAndUpdate(
+        { _id: req.session.userID },
+        {
+          firstName,
+          lastName,
+          email
+        }
+      );
+    }
+
+    res.json({ msg: 'Success' });
   } catch (error) {
-    res.type('text').status(500).send('Error:  ' + error);
+    res.status(500).json('Error:  ' + error);
+  }
+});
+
+router.post('/resecure', async (req, res) => {
+  try {
+
+  } catch (error) {
+    res.status(500).json('Error:  ' + error);
   }
 });
 
