@@ -9,6 +9,7 @@ export const Password = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
+    if (newPassword.length < 8) return alert('Password must be at least 8 characters long');
     if (newPassword !== checkPassword)
       return alert('The new passwords do not match');
 
