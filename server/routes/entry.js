@@ -47,19 +47,19 @@ router.post('/create', async (req, res) => {
   }
 });
 
-router.get('/populate/:community', async (req, res) => {
-  try {
-    let library = await Entry
-      .find({ authorId: req.session.userID })
-      .sort({ createAt: 'desc' });
-    let feed = await Entry
-      .find({ community: req.params.community })
-      .sort({ createdAt: 'desc' });
-    res.json({ library, feed });
-  } catch (error) {
-    res.status(500).json('Error: ' + error);
-  }
-})
+// router.get('/populate/:community', async (req, res) => {
+//   try {
+//     let library = await Entry
+//       .find({ authorId: req.session.userID })
+//       .sort({ createAt: 'desc' });
+//     let feed = await Entry
+//       .find({ community: req.params.community })
+//       .sort({ createdAt: 'desc' });
+//     res.json({ library, feed });
+//   } catch (error) {
+//     res.status(500).json('Error: ' + error);
+//   }
+// });
 
 router.get('/library', async (req, res) => {
   try {
