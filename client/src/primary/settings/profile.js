@@ -24,11 +24,13 @@ export const Profile = props => {
     })
       .then(res => res.json())
       .then(res => {
-        if (res.error) alert(res.error);
+        if (res.error) {
+          alert(res.error)
+        } else {
+          setIsUpdating(false);
+        }
       })
       .catch(console.error);
-
-    setIsUpdating(false);
   }
 
   return isUpdating ? (

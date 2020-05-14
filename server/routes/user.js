@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
       res.json('Login successful');
     });
   } catch (error) {
-    res.status(500).json('Error:  ' + error);
+    res.status(500).json('error:  ' + error);
   }
 });
 
@@ -58,7 +58,7 @@ router.get('/profile', async (req, res) => {
     console.log(user);
     res.json(user);
   } catch (error) {
-    res.status(500).json('Error:  ' + error);
+    res.status(500).json('error:  ' + error);
   }
 });
 
@@ -74,7 +74,7 @@ router.post('/update', async (req, res) => {
 
     if (check) {
       if (check._id != req.session.userID)
-        return res.json({ Error: 'Email already in use' });
+        return res.json({ error: 'Email already in use' });
 
       await check.update({
         firstName,
@@ -93,7 +93,7 @@ router.post('/update', async (req, res) => {
 
     res.json({ msg: 'Success' });
   } catch (error) {
-    res.status(500).json('Error:  ' + error);
+    res.status(500).json('error:  ' + error);
   }
 });
 
@@ -101,7 +101,7 @@ router.post('/resecure', async (req, res) => {
   try {
 
   } catch (error) {
-    res.status(500).json('Error:  ' + error);
+    res.status(500).json('error:  ' + error);
   }
 });
 
@@ -110,7 +110,7 @@ router.post('/delete/:id', async (req, res) => {
     await User.findByIdAndDelete(req.params.id);
     res.send('Deleted User');
   } catch (error) {
-    res.type('text').status(500).send('Error:  ' + error);
+    res.status(500).json('error:  ' + error);
   }
 });
 
@@ -121,7 +121,7 @@ router.get('/logout', (req, res) => {
     });
     res.json({ Message: 'User logged out.' });
   } catch (error) {
-    res.type('text').status(500).send('Error:  ' + error);
+    res.status(500).json('error:  ' + error);
   }
 });
 
