@@ -8,7 +8,8 @@ import {
   LocationContext,
   LibraryContext,
   FeedContext,
-  SubFeedContext  
+  SubFeedContext,
+  GenreContext
 } from '../context';
 
 import './primary.css';
@@ -22,6 +23,17 @@ export const Primary = () => {
   const [library, setLibrary] = useState([]);
   const [feed, setFeed] = useState([]);
   const [subFeed, setSubFeed] = useState([]);
+  const [genre, setGenre] = useState([
+    'Fiction',
+    'Poetry',
+    'Speculative',
+    'Sci-Fi',
+    'Fantasy',
+    'Essay',
+    'Non-fiction',
+    'Memoir',
+    'Article'
+  ]);
 
   useEffect(() => {
     fetch('http://localhost:4000/entry/community/'
@@ -35,19 +47,21 @@ export const Primary = () => {
 
   return (
     <EntryContext.Provider value={{ entry, setEntry }}>
+      <GenreContext.Provider value={{ genre, setGenre }}>
 
-      <Toolbar />
-      <Nav />
+        <Toolbar />
+        <Nav />
 
-      <LibraryContext.Provider value={{ library, setLibrary }}>
-        <FeedContext.Provider value={{ feed, setFeed }} >
-          <SubFeedContext.Provider value={{ subFeed, setSubFeed }}>
-            {lng && lat && <Map lng={lng} lat={lat} />}
-            <Feed />
-          </SubFeedContext.Provider>
-        </FeedContext.Provider>
-      </LibraryContext.Provider>
+        <LibraryContext.Provider value={{ library, setLibrary }}>
+          <FeedContext.Provider value={{ feed, setFeed }} >
+            <SubFeedContext.Provider value={{ subFeed, setSubFeed }}>
+              {lng && lat && <Map lng={lng} lat={lat} />}
+              <Feed />
+            </SubFeedContext.Provider>
+          </FeedContext.Provider>
+        </LibraryContext.Provider>
 
+      </GenreContext.Provider>
     </EntryContext.Provider>
   )
 }

@@ -1,16 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   BsChevronLeft,
   BsChevronRight
 } from 'react-icons/bs';
-
-const genres = [
-  'All',
-  'Fiction',
-  'Poem',
-  'Non-Fiction',
-  'Sci-Fi'
-];
+import { GenreContext } from '../../context';
 
 const genreSetter = {
   display: 'flex',
@@ -39,6 +32,8 @@ const genreButton = {
 }
 
 export const GenreSetter = ({ setGenre }) => {
+  const { genre } = useContext(GenreContext);
+
   return (
     <div style={genreSetter}>
       <BsChevronLeft />
@@ -47,7 +42,11 @@ export const GenreSetter = ({ setGenre }) => {
         style={genresContainer}
         className='noBar'
       >
-        {genres.map(item => (
+        <button
+          style={genreButton}
+          onClick={() => setGenre('All')}
+        >All</button>
+        {genre.map(item => (
           <button
             key={item}
             style={genreButton}

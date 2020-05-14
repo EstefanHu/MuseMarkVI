@@ -15,7 +15,7 @@ export const Map = ({ lng, lat }) => {
     longitude: lng,
     width: '100vw',
     height: '100vh',
-    zoom: 14
+    zoom: 13.5
   });
   const [api, setApi] = useState(null);
 
