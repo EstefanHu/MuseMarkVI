@@ -65,7 +65,13 @@ export const Password = () => {
         placeholder='Check Password'
         required
       />
-      <input type='submit' value='Update Password' />
+      <span className='form__sprawl'>
+        <input type='submit' value='Update Password' />
+        <button
+          type='button'
+          onClick={() => setIsUpdating(false)}
+        >Cancel Changes</button>
+      </span>
     </form>
     : <button
       onClick={() => setIsUpdating(true)}
