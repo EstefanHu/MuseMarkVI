@@ -35,6 +35,8 @@ export const Primary = () => {
     'Essay',
   ]);
 
+
+  // TODO: Converge into one API call
   useEffect(() => {
     fetch('http://localhost:4000/entry/community/'
       + community, {
@@ -44,6 +46,15 @@ export const Primary = () => {
       .then(res => setFeed(res.entries))
       .catch(console.error);
   }, [community]);
+
+  useEffect(() => {
+    fetch('http://localhost:4000/entry/library', {
+      credentials: 'include'
+    })
+      .then(res => res.json())
+      .then(res => setLibrary(res.entries))
+      .catch(console.error);
+  }, [library])
 
   return (
     <EntryContext.Provider value={{ entry, setEntry }}>

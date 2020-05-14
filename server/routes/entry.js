@@ -50,9 +50,9 @@ router.post('/create', async (req, res) => {
 router.get('/library', async (req, res) => {
   try {
     let entries = await Entry
-      .find({ author: req.session.userID })
+      .find({ authorId: req.session.userID })
       .sort({ createdAt: 'desc' });
-    res.json(entries);
+    res.json({"entries": entries});
   } catch (error) {
     res.status(500).json('Error: ' + error);
   }
