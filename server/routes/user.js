@@ -55,7 +55,6 @@ router.post('/login', async (req, res) => {
 router.get('/profile', async (req, res) => {
   try {
     const user = await User.findById(req.session.userID);
-    console.log(user);
     res.json(user);
   } catch (error) {
     res.status(500).json('error:  ' + error);
@@ -99,7 +98,25 @@ router.post('/update', async (req, res) => {
 
 router.post('/resecure', async (req, res) => {
   try {
+    const {
+      currentPassword,
+      newPassword
+    } = req.body;
 
+    await User.findById(
+      req.session.userID,
+      function (err, user) {
+        if (err) throw err;
+
+        user.comparePassword(currentPassword, async function (err, isMatch) {
+          if (err) throw err;
+          if (!isMatch) return res.json({ error: 'Your password was incorrect.' });
+
+          user.password = newPassword;
+          await user.save();
+          res.json({ msg: 'password updated' });
+        });
+      });
   } catch (error) {
     res.status(500).json('error:  ' + error);
   }

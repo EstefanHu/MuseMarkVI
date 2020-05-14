@@ -4,6 +4,7 @@ import { Logout } from './logout';
 import { Profile } from './profile';
 
 import './settings.css';
+import { Password } from './password';
 
 export const Settings = () => {
   const [user, setUser] = useState();
@@ -26,6 +27,7 @@ export const Settings = () => {
           email={user.email}
         />
       }
+      <Password />
       <Logout />
     </>
   )
