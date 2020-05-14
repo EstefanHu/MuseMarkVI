@@ -26,13 +26,13 @@ export const Primary = () => {
   const [genre, setGenre] = useState([
     'Fiction',
     'Poetry',
+    'Non-Fiction',
     'Speculative',
+    'YA',
+    'Religion',
     'Sci-Fi',
     'Fantasy',
     'Essay',
-    'Non-fiction',
-    'Memoir',
-    'Article'
   ]);
 
   useEffect(() => {

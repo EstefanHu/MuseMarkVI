@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Marker } from 'react-map-gl';
 import { MdLocationOn } from 'react-icons/md';
+import { LibraryContext } from '../../../context';
+
+const icon = {
+  width: '40px',
+  height: '40px',
+}
 
 export const MapDashboard = () => {
-  return (
-    <>
+  const { library } = useContext(LibraryContext);
+
+  return library && (
+    library.map((item, index) => (
       <Marker
-        latitude={47.66}
-        longitude={-122.23}
+        key={index}
+        latitude={item.coordinates[1]}
+        longitude={item.coordinates[0]}
         offsetLeft={-25}
         offsetTop={-47}
       >
-        <MdLocationOn />
+        <MdLocationOn
+          style={icon} />
       </Marker>
-    </>
+    ))
   )
 }

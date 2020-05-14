@@ -1,23 +1,18 @@
 
-import React, { useState, useEffect, useContext } from 'react';
-import { FeedContext } from '../../context';
+import React, { useContext } from 'react';
+import { LibraryContext } from '../../context';
 
 import { EntryContainer } from '../components/entryContainer';
 
 import './dashboard.css';
 
 export const Dashboard = () => {
-  const { feed } = useContext(FeedContext);
-  const [entries, setEntries] = useState([])
-
-  useEffect(() => {
-    setEntries(feed);
-  }, [feed]);
+  const { library } = useContext(LibraryContext);
 
   return (
     <>
       <h1 className='header'>Your Entries</h1>
-      <EntryContainer entries={entries} />
+      <EntryContainer entries={library} />
     </>
   )
 }
