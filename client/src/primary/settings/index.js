@@ -14,7 +14,7 @@ export const Settings = () => {
       credentials: 'include'
     })
       .then(res => res.json())
-      .then(res => { setUser(res); console.log(res.firstName) })
+      .then(res => setUser(res))
       .catch(console.error);
   }, []);
 
