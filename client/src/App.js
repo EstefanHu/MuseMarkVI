@@ -67,10 +67,6 @@ export const App = () => {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    console.log('hello');
-  });
-
   return (
     <LocationContext.Provider value={{ lng, setLng, lat, setLat, community, setCommunity }}>
       <Router>

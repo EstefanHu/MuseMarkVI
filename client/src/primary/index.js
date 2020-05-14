@@ -68,10 +68,6 @@ export const Primary = () => {
   //     .catch(console.error);
   // }, [community]);
 
-  useEffect(() => {
-    console.log('primary');
-  })
-
   return (
     <EntryContext.Provider value={{ entry, setEntry }}>
       <GenreContext.Provider value={{ genre, setGenre }}>
