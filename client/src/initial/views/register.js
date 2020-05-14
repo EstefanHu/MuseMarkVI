@@ -30,8 +30,11 @@ export const Register = withRouter(props => {
     })
       .then(res => res.json())
       .then(res => {
-        if (res.error) alert(res.error);
-        props.history.push('/app/dashboard');
+        if (res.error) {
+          alert(res.error)
+        } else {
+          props.history.push('/app/dashboard');
+        }
       })
       .catch(console.error);
   }
