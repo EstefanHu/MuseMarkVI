@@ -13,9 +13,10 @@ export const Profile = props => {
   }
 
   return isUpdating ? (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='settings__form'>
       <input
         type='text'
+        className='form__input'
         value={firstName}
         onChange={e => setFirstName(e.target.value)}
         placeholder='First Name'
@@ -23,6 +24,7 @@ export const Profile = props => {
       />
       <input
         type='text'
+        className='form__input'
         value={lastName}
         onChange={e => setLastName(e.target.value)}
         placeholder='Last Name'
@@ -30,11 +32,19 @@ export const Profile = props => {
       />
       <input
         type='email'
+        className='form__input'
         value={email}
         onChange={e => setEmail(e.target.value)}
         placeholder='Email Address'
         required
       />
+      <span className='form__sprawl'>
+        <input type='submit' value='Save' />
+        <button
+        type='button'
+        onClick={() => setIsUpdating(false)}
+        >Cancel Changes</button>
+      </span>
     </form>
   ) : (
       <>

@@ -1,0 +1,39 @@
+.settings__form {
+  padding: 20px;
+}
+
+.form__input {
+  border: none;
+  border-bottom: 1px solid grey;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  outline: 0;
+  width: 100%;
+}
+
+.form__input:focus {
+  border-bottom: 2px solid var(--color-accent-secondary);
+  padding-top: 1px;
+  padding-bottom: 8px;
+}
+
+.form__sprawl {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form__sprawl>* {
+  width: 48%;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 6px;
+}
+
+.form__sprawl input {
+  border: none;
+  background: var(--color-accent);
+  color: white;
+}
