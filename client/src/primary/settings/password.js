@@ -74,6 +74,7 @@ export const Password = () => {
       </span>
     </form>
     : <button
+      className='settings__button'
       onClick={() => setIsUpdating(true)}
     >Change Password</button>
 }

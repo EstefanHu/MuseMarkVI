@@ -2,14 +2,6 @@ import React, { useState } from 'react';
 import Cookie from 'js-cookie';
 import { withRouter } from 'react-router-dom';
 
-const button = {
-  background: 'white',
-  width: '48%',
-  padding: '6px 8px',
-  border: '1px solid lightgrey',
-  borderRadius: '5px'
-}
-
 export const Logout = withRouter(props => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
@@ -30,16 +22,14 @@ export const Logout = withRouter(props => {
   return isLoggingOut ?
     <span className='form__sprawl'>
       <button
-        style={button}
         onClick={handleLogout}
       >Yes, Log me out</button>
       <button
-        style={button}
         onClick={() => setIsLoggingOut(false)}
       >No, keep writing</button>
     </span>
     : <button
-      style={button}
+      className='settings__button'
       onClick={() => setIsLoggingOut(true)}
     >Logout</button>
 });

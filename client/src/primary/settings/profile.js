@@ -72,6 +72,7 @@ export const Profile = props => {
         <h1>{firstName} {lastName}</h1>
         <h2>{email}</h2>
         <button
+          className='settings__button'
           onClick={() => setIsUpdating(true)}
         >Update</button>
       </>
