@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const entrySchema = new Schema({
+const storySchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -49,4 +49,4 @@ const entrySchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Entry', entrySchema);
+module.exports = mongoose.model('Entry', storySchema);
