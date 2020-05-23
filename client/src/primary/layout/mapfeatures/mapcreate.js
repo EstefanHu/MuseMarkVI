@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { EntryContext } from '../../../context';
+import { StoryContext } from '../../../context';
 import { MdLocationOn } from 'react-icons/md';
 import { Marker } from 'react-map-gl';
 
@@ -9,12 +9,12 @@ const icon = {
 }
 
 export const MapCreate = () => {
-  const { entry } = useContext(EntryContext);
+  const { story } = useContext(StoryContext);
 
-  return entry && (
+  return story && (
     <Marker
-      latitude={entry.latitude}
-      longitude={entry.longitude}
+      latitude={story.latitude}
+      longitude={story.longitude}
       offsetLeft={-25}
       offsetTop={-47}
     >

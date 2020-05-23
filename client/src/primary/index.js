@@ -4,7 +4,7 @@ import { Toolbar } from './layout/toolbar.js';
 import { Nav } from './layout/nav.js';
 
 import {
-  EntryContext,
+  StoryContext,
   LocationContext,
   LibraryContext,
   FeedContext,
@@ -19,7 +19,7 @@ import { Feed } from './layout/feed';
 
 export const Primary = () => {
   const { lng, lat, community } = useContext(LocationContext);
-  const [entry, setEntry] = useState(null);
+  const [story, setStory] = useState(null);
   const [library, setLibrary] = useState([]);
   const [feed, setFeed] = useState([]);
   const [subFeed, setSubFeed] = useState([]);
@@ -38,26 +38,26 @@ export const Primary = () => {
 
   //TODO: Converge into one API call
   useEffect(() => {
-    fetch('http://localhost:4000/entry/community/'
+    fetch('http://localhost:4000/story/community/'
       + community, {
       credentials: 'include'
     })
       .then(res => res.json())
-      .then(res => setFeed(res.entries))
+      .then(res => setFeed(res.stories))
       .catch(console.error);
   }, [community]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/entry/library', {
+    fetch('http://localhost:4000/story/library', {
       credentials: 'include'
     })
       .then(res => res.json())
-      .then(res => setLibrary(res.entries))
+      .then(res => setLibrary(res.stories))
       .catch(console.error);
   }, []);
 
   // useEffect(() => {
-  //   fetch('http://localhost:4000/entry/populate/' + community, {
+  //   fetch('http://localhost:4000/story/populate/' + community, {
   //     credentials: 'include'
   //   })
   //     .then(res => res.json())
@@ -69,7 +69,7 @@ export const Primary = () => {
   // }, [community]);
 
   return (
-    <EntryContext.Provider value={{ entry, setEntry }}>
+    <StoryContext.Provider value={{ story, setStory }}>
       <GenreContext.Provider value={{ genre, setGenre }}>
 
         <Toolbar />
@@ -85,6 +85,6 @@ export const Primary = () => {
         </LibraryContext.Provider>
 
       </GenreContext.Provider>
-    </EntryContext.Provider>
+    </StoryContext.Provider>
   )
 }

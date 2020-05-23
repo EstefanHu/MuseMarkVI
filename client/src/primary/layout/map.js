@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Route } from 'react-router-dom';
 import ReactMapGl from 'react-map-gl';
-import { EntryContext } from '../../context';
+import { StoryContext } from '../../context';
 
 import { MapCreate } from './mapfeatures/mapcreate';
 import { Loading } from './loading';
@@ -9,7 +9,7 @@ import { MapDashboard } from './mapfeatures/mapdashboard';
 import { MapCommunity } from './mapfeatures/mapcommunity';
 
 export const Map = ({ lng, lat }) => {
-  const { entry, setEntry } = useContext(EntryContext);
+  const { story, setStory } = useContext(StoryContext);
   const [viewport, setViewport] = useState({
     latitude: lat,
     longitude: lng,
@@ -30,7 +30,7 @@ export const Map = ({ lng, lat }) => {
     const action = sessionStorage.getItem('action');
     switch (action) {
       case 'Plot':
-        setEntry({...entry , 
+        setStory({...story , 
           'longitude': e.lngLat[0],
           'latitude': e.lngLat[1]
         });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { EntryContext, LocationContext } from '../../context';
+import { StoryContext, LocationContext } from '../../context';
 
 import './new.css';
 import { PlotBtn } from './plotBtn';
@@ -8,7 +8,7 @@ import { PrePlotForm } from './prePlotForm';
 
 export const New = props => {
   const { community } = useContext(LocationContext);
-  const { entry, setEntry } = useContext(EntryContext);
+  const { story, setStory } = useContext(StoryContext);
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('Fiction');
@@ -16,15 +16,15 @@ export const New = props => {
 
     useEffect(() => {
       return () => {
-        setEntry(null);
+        setStory(null);
         sessionStorage.removeItem('action');
       }
-    }, [setEntry]);
+    }, [setStory]);
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    fetch('http://localhost:4000/entry/create', {
+    fetch('http://localhost:4000/story/create', {
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -35,8 +35,8 @@ export const New = props => {
         title,
         description,
         genre,
-        longitude: entry.longitude,
-        latitude: entry.latitude,
+        longitude: story.longitude,
+        latitude: story.latitude,
         community,
         body
       })
@@ -45,7 +45,7 @@ export const New = props => {
       .then(console.log)
       .catch(console.error);
 
-    setEntry(null);
+    setStory(null);
     props.history.push('/app/dashboard');
   }
 
@@ -59,10 +59,10 @@ export const New = props => {
         description={description} setDescription={e => setDescription(e)}
         setGenre={e => setGenre(e)}
       />
-      {entry !== null ? // TODO: Will not last upgrade. Needs to be made resilient
+      {story !== null ? // TODO: Will not last upgrade. Needs to be made resilient
         <PostPlotForm
-          longitude={entry.longitude}
-          latitude={entry.latitude}
+          longitude={story.longitude}
+          latitude={story.latitude}
           body={body} setBody={e => setBody(e)}
         /> : <PlotBtn />
       }
