@@ -80,6 +80,9 @@ app.use('/user', userRouter);
 const storyRouter = require('./routes/story');
 app.use('/story', storyRouter);
 
+const mobileRouter = require('./routes/mobile');
+app.use('/mobile', mobileRouter);
+
 app.get('/*', (_, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
