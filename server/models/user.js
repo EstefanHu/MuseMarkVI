@@ -41,6 +41,10 @@ const userSchema = new Schema({
     isDeleted: {
         type: Boolean,
         default: false
+    },
+    library: {
+        type: [String],
+        default: []
     }
 }, {
     timestamps: true
