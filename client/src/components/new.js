@@ -59,8 +59,21 @@ export const New = props => {
     props.history.push('/app/dashboard');
   }
 
+  const plottingPoint = () => {
+    setIsPlotting(isPlotting => !isPlotting);
+    sessionStorage.setItem('action', 'Plot');
+    let pointer = document.getElementById('point');
+    document.addEventListener('mousemove', function (e) {
+      let x = e.clientX;
+      let y = e.clientY
+      pointer.style.left = x + 'px';
+      pointer.style.top = y + 'px';
+    });
+  }
+
   return (
     <form onSubmit={handleSubmit} className='entry__form'>
+      {!story && isPlotting && <div className='mask'></div>}
       <h1 className='header'>New Story</h1>
 
       <label>Title:</label>
@@ -141,10 +154,7 @@ export const New = props => {
         </> : isPlotting ? <LoadFeed />
           : <button
             className='entry__plotbutton'
-            onClick={() => {
-              setIsPlotting(isPlotting => !isPlotting);
-              sessionStorage.setItem('action', 'Plot');
-            }}
+            onClick={() => plottingPoint()}
           >Plot Entry</button>
       }
     </form>

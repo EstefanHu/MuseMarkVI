@@ -1,7 +1,11 @@
 import React from 'react';
 
 export const LoadFeed = () => (
-  <div id='feedLoader' >
-    <p></p>
-  </div>
+  <>
+    <p>Select Location</p>
+
+    <div id='feedLoader' >
+      <p></p>
+    </div>
+  </>
 )

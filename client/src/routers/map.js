@@ -42,23 +42,28 @@ export const Map = ({ lng, lat }) => {
     sessionStorage.removeItem('action');
   }
 
-  return api && lng && lat ? (
-    <div id='mapboxView'>
-      <ReactMapGl
-        {...viewport}
-        mapboxApiAccessToken={api}
-        mapStyle='mapbox://styles/estefan074/ck002rku546481cnq4hc1buof'
-        onViewportChange={viewport => {
-          setViewport(viewport)
-        }}
-        onClick={engage}
-      >
+  return (
+    <>
+      {api && lng && lat ? (
+        <div id='mapboxView'>
+          <ReactMapGl
+            {...viewport}
+            mapboxApiAccessToken={api}
+            mapStyle='mapbox://styles/estefan074/ck002rku546481cnq4hc1buof'
+            onViewportChange={viewport => {
+              setViewport(viewport)
+            }}
+            onClick={engage}
+          >
 
-        <Route exact path='/app/new' component={MapCreate} />
-        <Route exact path='/app/dashboard' component={MapDashboard} />
-        <Route exact path='/app/community' component={MapCommunity} />
+            <Route exact path='/app/new' component={MapCreate} />
+            <Route exact path='/app/dashboard' component={MapDashboard} />
+            <Route exact path='/app/community' component={MapCommunity} />
 
-      </ReactMapGl>
-    </div>
-  ) : null;
+          </ReactMapGl>
+        </div>
+      ) : null}
+      <div id='point'></div>
+    </>
+  )
 }
