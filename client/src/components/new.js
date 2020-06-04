@@ -62,18 +62,27 @@ export const New = props => {
   const plottingPoint = () => {
     setIsPlotting(isPlotting => !isPlotting);
     sessionStorage.setItem('action', 'Plot');
+
     let pointer = document.getElementById('point');
-    document.addEventListener('mousemove', function (e) {
+    let map = document.getElementById('mapboxView');
+    pointer.style.display = 'block';
+    map.style.cursor = 'none';
+    function moveImage(e) {
+      if (pointer.style.display === 'none') {
+        setIsPlotting(false);
+        document.removeEventListener('mousemove', moveImage);
+      }
       let x = e.clientX;
-      let y = e.clientY
-      pointer.style.left = x + 'px';
-      pointer.style.top = y + 'px';
-    });
+      let y = e.clientY;
+      pointer.style.left = x - 12.5 + 'px';
+      pointer.style.top = y - 30 + 'px';
+    }
+    document.addEventListener('mousemove', moveImage);
   }
 
   return (
     <form onSubmit={handleSubmit} className='entry__form'>
-      {!story && isPlotting && <div className='mask'></div>}
+      {isPlotting && <div className='mask'></div>}
       <h1 className='header'>New Story</h1>
 
       <label>Title:</label>
@@ -115,7 +124,7 @@ export const New = props => {
           <button
             className='entry__plotbutton'
             type='button'
-            onClick={() => sessionStorage.setItem('action', 'Plot')}
+            onClick={() => plottingPoint()}
           >Re-Plot Entry</button>
 
           <label>Longitude:</label>

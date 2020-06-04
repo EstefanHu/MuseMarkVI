@@ -73,6 +73,7 @@ select.entry__content {
 #point {
   width: 25px;
   height: 30px;
+  display: none;
   position: absolute;
   background-image: url('../img/point.png');
   background-repeat: no-repeat;

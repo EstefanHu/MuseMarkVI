@@ -34,6 +34,8 @@ export const Map = ({ lng, lat }) => {
           'longitude': e.lngLat[0],
           'latitude': e.lngLat[1]
         });
+        let pointer = document.getElementById('point');
+        pointer.style.display = 'none';
         break;
       default:
         console.log(e.lngLat);
