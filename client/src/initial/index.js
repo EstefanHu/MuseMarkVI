@@ -16,12 +16,12 @@ export const Initial = () => (
   <>
     <Nav />
     <main id='landingContainer'>
-      <Route exact path='/' component={Landing} />
-      <Route path='/login' component={Login} />
-      <Route path='/register' component={Register} />
-      <Route path='/privacy' component={Privacy} />
-      <Route path='/terms' component={Terms} />
-      <Route path='/forgot' component={Forgot} />
+      {/* <Route exact path='/' component={Landing} /> */}
+      <Route exact path='/' component={Login} />
+      <Route exact path='/register' component={Register} />
+      <Route exact path='/privacy' component={Privacy} />
+      <Route exact path='/terms' component={Terms} />
+      <Route exact path='/forgot' component={Forgot} />
     </main>
   </>
 );

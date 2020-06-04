@@ -92,6 +92,7 @@ router.get('/refreshFeed', async (req, res) => {
 
 router.get('/refreshLibrary', async (req, res) => {
   try {
+    console.log('yolo')
     if (!req.session.userID) return res.json({ err: 'No user session' });
 
     const user = await User.findById(req.session.userID);
