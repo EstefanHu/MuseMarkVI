@@ -10,7 +10,7 @@ import { Privacy } from '../views/privacy';
 import { Terms } from '../views/terms';
 import { Forgot } from '../views/forgot';
 
-import { Nav } from '../components/nav';
+import { Nav } from '../layout/nav.js';
 
 export const Initial = () => (
   <>

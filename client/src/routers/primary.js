@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import { Toolbar } from '../components/toolbar.js';
-import { Nav } from '../components/nav.js';
+import { Toolbar } from '../layout/toolbar.js';
+import { Nav } from '../layout/primarynav.js';
 
 import {
   StoryContext,
@@ -15,7 +15,7 @@ import {
 import '../styles/primary.css';
 
 import { Map } from '../components/map';
-import { Feed } from '../components/feed';
+import { Feed } from '../layout/feed';
 
 export const Primary = () => {
   const { lng, lat, community } = useContext(LocationContext);
