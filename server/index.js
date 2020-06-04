@@ -1,6 +1,5 @@
 'use strict';
 const express = require('express');
-const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -33,7 +32,6 @@ mongoose.connection.once('open', () => {
 
 require('dotenv').config()
 
-app.use((express.static(path.join(__dirname, '../client/build'))));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
@@ -82,10 +80,6 @@ app.use('/story', storyRouter);
 
 const mobileRouter = require('./routes/mobile');
 app.use('/mobile', mobileRouter);
-
-app.get('/*', (_, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
