@@ -12,6 +12,7 @@
   height: 35px;
   background: white;
   border-radius: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 textarea.entry__content {

@@ -3,7 +3,6 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import { FiPlusSquare } from 'react-icons/fi';
 
 export const Toolbar = () => (
   <nav id='toolbar' className='topNav'>
@@ -11,7 +10,9 @@ export const Toolbar = () => (
     <span>
       <Route exact path='/app/(dashboard|community|settings)'>
         <Link to='/app/new'>
-          <FiPlusSquare className='toolbar__icons' />
+          <button className='toolbar__button'>
+            New
+          </button>
         </Link>
       </Route>
       <Route exact path='/app/new'>

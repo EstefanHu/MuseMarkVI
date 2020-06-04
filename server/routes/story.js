@@ -66,6 +66,7 @@ router.get('/library', async (req, res) => {
     let stories = await Story
       .find({ authorId: req.session.userID })
       .sort({ createdAt: 'desc' });
+      console.log(stories);
     res.json({ "stories": stories });
   } catch (error) {
     res.status(500).json('Error: ' + error);
