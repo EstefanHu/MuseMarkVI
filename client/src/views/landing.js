@@ -1,4 +1,5 @@
 import React from 'react';
+// const asset_1 = require('../img/asset_1.png');
 
 export const Landing = () => (
   <>
@@ -8,7 +9,8 @@ export const Landing = () => (
     </h1>
     </section>
 
-    <div className='parallax__layer'>
+    <div className='parallax__layer parallax__content'>
+      <h1 className='fancy__title'>Project:Muse</h1>
       <section className='landingContent'>
         <article>
           <h1>Welcome to Project:Muse</h1>
@@ -30,19 +32,24 @@ export const Landing = () => (
           <h2>Why localization is important</h2>
           <p>Now, more than ever, we need a sence of community.</p>
         </article>
-        <article>
-          <h2>... a final note</h2>
+        {/* <article>
+          <h2>A final note...</h2>
           <p>
-            I want to thank my parents for supporting and believing in my dreams.
-
+            I want to thank my parents for believing in me.
           </p>
-        </article>
-
+        </article> */}
         <footer />
         <div>
-          
+
         </div>
       </section>
     </div>
+
+    <section className='parallax__layer frame'>
+      <div id='banner'>
+        <img src='./img/asset_banner.png' alt='banner' />
+      </div>
+      {/* <img src='./img/asset_1.png' alt='asset_1' /> */}
+    </section>
   </>
 );
