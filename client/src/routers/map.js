@@ -61,7 +61,7 @@ export const Map = ({ lng, lat }) => {
             <Route exact path='/app/new' component={MapCreate} />
             <Route exact path='/app/dashboard' component={MapDashboard} />
             <Route exact path='/app/community' component={MapCommunity} />
-
+            
           </ReactMapGl>
         </div>
       ) : null}
