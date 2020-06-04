@@ -28,7 +28,7 @@
 }
 
 #hero__text {
-  font-size: 23rem;
+  font-size: calc(7rem + 13vw);
   color: var(--color-accent);
   background: -webkit-linear-gradient(var(--color-accent), white);
   -webkit-background-clip: text;
@@ -52,9 +52,8 @@
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-start;
-  height: 100vh;
+  height: 110vh;
   transform: translateZ(-1px) scale(2);
-  padding: 0 200px;
 }
 
 #landing__nav--login,
@@ -205,6 +204,7 @@
 }
 
 .landingContent {
+  padding: 20px;
   min-width: 400px;
   max-width: 1200px;
   margin: 400px auto;
@@ -213,9 +213,24 @@
 .landingContent div {
   padding: 20px;
   min-width: 400px;
-  max-width: 800px;
-  margin-bottom: 150px;
-  background-color: white;
+  max-width: 700px;
+  margin-bottom: 120px;
+  background-color: rgba(255,255,255,0.95);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  padding-left: 70px;
+}
+
+.landingContent div::before {
+  content: '';
+  background-color: var(--color-accent-tertiary);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 40px;
 }
 
 .landingContent h1 {
