@@ -1,5 +1,6 @@
 import React from 'react';
-// const asset_1 = require('../img/asset_1.png');
+
+import '../styles/parallax.css';
 
 export const Landing = () => (
   <>
