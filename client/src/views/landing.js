@@ -10,14 +10,37 @@ export const Landing = () => (
 
     <div className='parallax__layer'>
       <section className='landingContent'>
-        <div>
+        <article>
           <h1>Welcome to Project:Muse</h1>
-          <p>Project:Muse is an experimental story telling platform that prioritizes the context of the story over its popularity.</p>
+          <p>
+            Project:Muse is an experimental story telling platform
+            that prioritizes the context of the story over its popularity.
+
+          </p>
           <p></p>
-        </div>
-        <div>
+        </article>
+        <article>
+          <h2>:Muse is still under development.</h2>
+          <p>
+            Most projects are constantly undergoing constant change ,
+            :Muse is no exception
+          </p>
+        </article>
+        <article>
           <h2>Why localization is important</h2>
-          <p></p>
+          <p>Now, more than ever, we need a sence of community.</p>
+        </article>
+        <article>
+          <h2>... a final note</h2>
+          <p>
+            I want to thank my parents for supporting and believing in my dreams.
+
+          </p>
+        </article>
+
+        <footer />
+        <div>
+          
         </div>
       </section>
     </div>
