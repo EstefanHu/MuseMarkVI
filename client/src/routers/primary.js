@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Route } from 'react-router-dom';
+
+import { Dashboard } from '../components/dashboard';
+import { Community } from '../components/community';
+import { New } from '../components/new';
+import { Settings } from '../components/settings';
 
 import { Toolbar } from '../layout/toolbar.js';
-import { Nav } from '../layout/primarynav.js';
+import { PrimaryNav } from '../layout/primarynav.js';
+import { Map } from './map';
+import { Loading } from '../layout/loading.js';
 
 import {
   StoryContext,
@@ -13,9 +21,6 @@ import {
 } from '../context';
 
 import '../styles/primary.css';
-
-import { Map } from '../components/map';
-import { Feed } from '../layout/feed';
 
 export const Primary = () => {
   const { lng, lat, community } = useContext(LocationContext);
@@ -73,13 +78,21 @@ export const Primary = () => {
       <GenreContext.Provider value={{ genre, setGenre }}>
 
         <Toolbar />
-        <Nav />
+        <PrimaryNav />
 
         <LibraryContext.Provider value={{ library, setLibrary }}>
           <FeedContext.Provider value={{ feed, setFeed }} >
             <SubFeedContext.Provider value={{ subFeed, setSubFeed }}>
-              {lng && lat && <Map lng={lng} lat={lat} />}
-              <Feed />
+              {lng && lat ? <Map lng={lng} lat={lat} /> : <Loading />}
+              <section
+                className='feed noBar'
+                id='feed'
+              >
+                <Route exact path='/app/dashboard' component={Dashboard} />
+                <Route exact path='/app/new' component={New} />
+                <Route exact path='/app/community' component={Community} />
+                <Route exact path='/app/settings' component={Settings} />
+              </section>
             </SubFeedContext.Provider>
           </FeedContext.Provider>
         </LibraryContext.Provider>

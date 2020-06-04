@@ -3,10 +3,9 @@ import { Route } from 'react-router-dom';
 import ReactMapGl from 'react-map-gl';
 import { StoryContext } from '../context';
 
-import { MapCreate } from './mapcreate';
-import { Loading } from './loading';
-import { MapDashboard } from './mapdashboard';
-import { MapCommunity } from './mapcommunity';
+import { MapCreate } from '../components/mapcreate';
+import { MapDashboard } from '../components/mapdashboard';
+import { MapCommunity } from '../components/mapcommunity';
 
 export const Map = ({ lng, lat }) => {
   const { story, setStory } = useContext(StoryContext);
@@ -30,7 +29,8 @@ export const Map = ({ lng, lat }) => {
     const action = sessionStorage.getItem('action');
     switch (action) {
       case 'Plot':
-        setStory({...story , 
+        setStory({
+          ...story,
           'longitude': e.lngLat[0],
           'latitude': e.lngLat[1]
         });
@@ -38,7 +38,7 @@ export const Map = ({ lng, lat }) => {
       default:
         console.log(e.lngLat);
     }
-    
+
     sessionStorage.removeItem('action');
   }
 
@@ -60,7 +60,5 @@ export const Map = ({ lng, lat }) => {
 
       </ReactMapGl>
     </div>
-  ) : (
-      <Loading />
-    )
+  ) : null;
 }

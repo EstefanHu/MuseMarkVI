@@ -6,7 +6,7 @@ import {
   MdSettings
 } from 'react-icons/md';
 
-export const Nav = () => (
+export const PrimaryNav = () => (
   <nav className='primaryNav'>
     <Link to='/app/dashboard' >
       <MdHome className='primaryIcon' />
