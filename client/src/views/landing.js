@@ -45,11 +45,7 @@ export const Landing = () => (
       </section>
     </div>
 
-    <section className='parallax__layer frame'>
-      <div id='banner'>
-        <img src='./img/asset_banner.png' alt='banner' />
-      </div>
-      {/* <img src='./img/asset_1.png' alt='asset_1' /> */}
+    <section className='parallax__layer parallax__frame'>
     </section>
   </>
 );

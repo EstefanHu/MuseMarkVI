@@ -1,0 +1,21 @@
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__back {
+  margin-top: 150vh;
+  transform: translateZ(-3px) scale(4);
+}
+
+.parallax__content {
+  transform: translateZ(-2px) scale(3);
+}
+
+.parallax__frame {
+  margin-top: 270px;
+  transform: translateZ(-1px) scale(2);
+}
