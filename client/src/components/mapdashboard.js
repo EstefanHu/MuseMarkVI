@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Marker } from 'react-map-gl';
 import { MdLocationOn } from 'react-icons/md';
-import { LibraryContext } from '../../../context';
+import { LibraryContext } from '../context';
 
 const icon = {
   width: '40px',

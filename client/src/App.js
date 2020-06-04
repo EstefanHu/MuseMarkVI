@@ -7,13 +7,13 @@ import {
 } from 'react-router-dom';
 import Cookie from 'js-cookie';
 
-import { Initial } from './initial';
-import { Primary } from './primary';
+import { Initial } from './routers/initial.js';
+import { Primary } from './routers/primary.js';
 import { FourOhFour } from './ERROR/FourOhFour';
 import { LocationContext } from './context';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import './App.css';
+import './styles/App.css';
 
 const checkAuth = () => {
   const cookie = Cookie.get('museCookie');

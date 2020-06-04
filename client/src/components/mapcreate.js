@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StoryContext } from '../../../context';
+import { StoryContext } from '../context';
 import { MdLocationOn } from 'react-icons/md';
 import { Marker } from 'react-map-gl';
 

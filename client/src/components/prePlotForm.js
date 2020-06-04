@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { GenreContext } from '../../context';
+import { GenreContext } from '../context';
 
 export const PrePlotForm = ({ title, setTitle, description, setDescription, setGenre }) => {
   const { genre } = useContext(GenreContext);

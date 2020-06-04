@@ -1,10 +1,10 @@
 
 import React, { useContext } from 'react';
-import { LibraryContext } from '../../context';
+import { LibraryContext } from '../context';
 
-import { EntryContainer } from '../components/entryContainer';
+import { EntryContainer } from './entryContainer';
 
-import './dashboard.css';
+import '../styles/dashboard.css';
 
 export const Dashboard = () => {
   const { library } = useContext(LibraryContext);

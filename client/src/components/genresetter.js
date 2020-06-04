@@ -3,7 +3,7 @@ import {
   BsChevronLeft,
   BsChevronRight
 } from 'react-icons/bs';
-import { GenreContext } from '../../context';
+import { GenreContext } from '../context';
 
 const genreSetter = {
   display: 'flex',

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Route } from 'react-router-dom';
 import ReactMapGl from 'react-map-gl';
-import { StoryContext } from '../../context';
+import { StoryContext } from '../context';
 
-import { MapCreate } from './mapfeatures/mapcreate';
+import { MapCreate } from './mapcreate';
 import { Loading } from './loading';
-import { MapDashboard } from './mapfeatures/mapdashboard';
-import { MapCommunity } from './mapfeatures/mapcommunity';
+import { MapDashboard } from './mapdashboard';
+import { MapCommunity } from './mapcommunity';
 
 export const Map = ({ lng, lat }) => {
   const { story, setStory } = useContext(StoryContext);

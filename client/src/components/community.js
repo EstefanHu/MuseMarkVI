@@ -3,13 +3,13 @@ import {
   LocationContext,
   FeedContext,
   SubFeedContext
-} from '../../context';
+} from '../context';
 
 import { GenreSetter } from './genresetter';
 
-import { EntryContainer } from '../components/entryContainer';
+import { EntryContainer } from './entryContainer';
 
-import './community.css';
+import '../styles/community.css';
 
 export const Community = () => {
   const { community } = useContext(LocationContext);

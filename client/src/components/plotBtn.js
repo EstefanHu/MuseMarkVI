@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { LoadFeed } from '../layout/loadFeed';
+import { LoadFeed } from './loadFeed';
 
 export const PlotBtn = () => {
   const [isPlotting, setIsPlotting] = useState(false);

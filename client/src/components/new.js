@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { StoryContext, LocationContext } from '../../context';
+import { StoryContext, LocationContext } from '../context';
 
-import './new.css';
+import '../styles/new.css';
 import { PlotBtn } from './plotBtn';
 import { PostPlotForm } from './postPlotForm';
 import { PrePlotForm } from './prePlotForm';

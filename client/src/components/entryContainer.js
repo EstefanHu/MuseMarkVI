@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Entry } from './entry';
-import { LoadFeed } from '../layout/loadFeed';
+import { LoadFeed } from './loadFeed';
 
 const entryContainer = {
   display: 'flex',

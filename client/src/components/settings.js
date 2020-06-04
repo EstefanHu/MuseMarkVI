@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Logout } from './logout';
 import { Profile } from './profile';
 
-import './settings.css';
+import '../styles/settings.css';
 import { Password } from './password';
 
 export const Settings = () => {

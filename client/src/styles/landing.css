@@ -109,11 +109,11 @@
 }
 
 #signinSplash {
-  background-image: url('./img/signin.png');
+  background-image: url('../img/signin.png');
 }
 
 #signupSplash {
-  background-image: url('./img/register.png');
+  background-image: url('../img/register.png');
 }
 
 #signupSplash h1,

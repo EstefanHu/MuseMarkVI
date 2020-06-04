@@ -14,7 +14,7 @@ export const Nav = () => (
           </Link>
         ) : (
             <>
-              <Link to='/'>
+              <Link to='/login'>
                 <button
                   id='landing__nav--login'
                 >Log in</button>

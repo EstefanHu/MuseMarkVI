@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import { Dashboard } from '../dashboard';
-import { Community } from '../community';
-import { New } from '../new';
-import { Settings } from '../settings';
+import { Dashboard } from './dashboard';
+import { Community } from './community';
+import { New } from './new';
+import { Settings } from './settings';
 
 export const Feed = () => {
   
